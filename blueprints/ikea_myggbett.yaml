@@ -1,0 +1,248 @@
+blueprint:
+  name: IKEA MYGGBETT Door/window sensor
+  description: >
+    Full-featured automation for the IKEA MYGGBETT E2492 Matter door/window sensor.
+    Supports separate immediate actions for DAY and NIGHT periods, single delayed
+    actions for door left open/closed, plus battery alerts.
+  domain: automation
+  author: Troy Rippin
+  input:
+    # ============================================================
+    # DOOR/WINDOW SENSOR
+    # ============================================================
+    door_entity:
+      name: Door/Window Sensor
+      description: Select the MYGGBETT door/window sensor (binary_sensor).
+      selector:
+        entity:
+          filter:
+            - device_class: door
+              domain: binary_sensor
+            - device_class: window
+              domain: binary_sensor
+            - device_class: opening
+              domain: binary_sensor
+
+    # ============================================================
+    # DAY / NIGHT PERIODS
+    # ============================================================
+    day_start:
+      name: Day Period Start
+      description: >
+        Time when the DAY period begins (e.g. 07:00).
+        The NIGHT period begins at "Night Period Start" and ends when Day begins.
+      default: "07:00:00"
+      selector:
+        time: {}
+
+    night_start:
+      name: Night Period Start
+      description: >
+        Time when the NIGHT period begins (e.g. 22:00).
+        The DAY period ends here.
+      default: "22:00:00"
+      selector:
+        time: {}
+
+    # ============================================================
+    # DOOR OPENED ACTIONS
+    # ============================================================
+    action_opened_immediate_day:
+      name: "Action: Door Opened — Immediate (Day)"
+      description: Run immediately when the door is opened during the DAY period.
+      default: []
+      selector:
+        action: {}
+
+    action_opened_immediate_night:
+      name: "Action: Door Opened — Immediate (Night)"
+      description: Run immediately when the door is opened during the NIGHT period.
+      default: []
+      selector:
+        action: {}
+
+    wait_opened_long:
+      name: "Wait Time (Opened Long)"
+      description: Time to wait before running the "Opened Long" action (0 to disable).
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+
+    action_opened_long:
+      name: "Action: Door Opened (Long)"
+      description: Run if the door remains open for the specified wait time.
+      default: []
+      selector:
+        action: {}
+
+    # ============================================================
+    # DOOR CLOSED ACTIONS
+    # ============================================================
+    action_closed_immediate_day:
+      name: "Action: Door Closed — Immediate (Day)"
+      description: Run immediately when the door is closed during the DAY period.
+      default: []
+      selector:
+        action: {}
+
+    action_closed_immediate_night:
+      name: "Action: Door Closed — Immediate (Night)"
+      description: Run immediately when the door is closed during the NIGHT period.
+      default: []
+      selector:
+        action: {}
+
+    wait_closed_long:
+      name: "Wait Time (Closed Long)"
+      description: Time to wait before running the "Closed Long" action (0 to disable).
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+
+    action_closed_long:
+      name: "Action: Door Closed (Long)"
+      description: Run if the door remains closed for the specified wait time.
+      default: []
+      selector:
+        action: {}
+
+    # ============================================================
+    # BATTERY SETTINGS
+    # ============================================================
+    battery_entity:
+      name: (Optional) Battery Sensor
+      description: Select the battery level sensor.
+      default: []
+      selector:
+        entity:
+          filter:
+            domain: sensor
+            device_class: battery
+
+    battery_low_threshold:
+      name: (Optional) Battery Low Level
+      description: Threshold for battery alert (%).
+      default: 30
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+
+    battery_low_action:
+      name: "Action: Battery Low"
+      description: Run when battery drops below threshold.
+      default: []
+      selector:
+        action: {}
+
+mode: parallel
+max_exceeded: silent
+
+trigger_variables:
+  door_entity_input: !input door_entity
+  battery_entity_input: !input battery_entity
+  battery_threshold_input: !input battery_low_threshold
+  wait_opened_long_input: !input wait_opened_long
+  wait_closed_long_input: !input wait_closed_long
+  day_start_input: !input day_start
+  night_start_input: !input night_start
+
+triggers:
+  - trigger: state
+    entity_id: !input door_entity
+    from: "off"
+    to: "on"
+    id: door_opened_immediate
+  - trigger: state
+    entity_id: !input door_entity
+    from: "off"
+    to: "on"
+    for:
+      seconds: !input wait_opened_long
+    id: door_opened_long
+  - trigger: state
+    entity_id: !input door_entity
+    from: "on"
+    to: "off"
+    id: door_closed_immediate
+  - trigger: state
+    entity_id: !input door_entity
+    from: "on"
+    to: "off"
+    for:
+      seconds: !input wait_closed_long
+    id: door_closed_long
+  - trigger: template
+    value_template: >
+      {{ battery_entity_input not in [none, [], ''] and
+         states(battery_entity_input) | is_number and
+         states(battery_entity_input) | float(100) < battery_threshold_input | float(-1) }}
+    id: battery_low
+
+actions:
+  - choose:
+
+      # ----------------------------------------------------------
+      # DOOR OPENED (IMMEDIATE)
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: door_opened_immediate
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: time
+                    after: !input day_start
+                    before: !input night_start
+                sequence: !input action_opened_immediate_day
+            default: !input action_opened_immediate_night
+
+      # ----------------------------------------------------------
+      # DOOR OPENED (LONG)
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: door_opened_long
+          - condition: template
+            value_template: "{{ wait_opened_long_input | int > 0 }}"
+        sequence: !input action_opened_long
+
+      # ----------------------------------------------------------
+      # DOOR CLOSED (IMMEDIATE)
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: door_closed_immediate
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: time
+                    after: !input day_start
+                    before: !input night_start
+                sequence: !input action_closed_immediate_day
+            default: !input action_closed_immediate_night
+
+      # ----------------------------------------------------------
+      # DOOR CLOSED (LONG)
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: door_closed_long
+          - condition: template
+            value_template: "{{ wait_closed_long_input | int > 0 }}"
+        sequence: !input action_closed_long
+
+      # ----------------------------------------------------------
+      # BATTERY LOW
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: battery_low
+        sequence: !input battery_low_action

@@ -1,0 +1,286 @@
+blueprint:
+  name: IKEA BILRESA Remote control button
+  description: >
+    Full-featured automation for the IKEA BILRESA dual-button remote via Matter.
+    Supports single press, double press, long press (on press and release),
+    and configurable while-holding repeat actions for each button.
+  domain: automation
+  author: Troy Rippin
+  input:
+    # ============================================================
+    # BUTTON SETUP
+    # ============================================================
+    setup:
+      name: Button Setup
+      description: >
+        Select the event entities for both buttons on the IKEA BILRESA
+        dual-button remote.
+      collapsed: true
+      input:
+        button1_event:
+          name: Button 1 Entity
+          description: Select the event entity for Button 1.
+          selector: &button_event_selector
+            entity:
+              multiple: true
+              filter:
+                domain: event
+                device_class: button
+
+        button2_event:
+          name: Button 2 Entity
+          description: Select the event entity for Button 2.
+          selector: *button_event_selector
+
+    # ============================================================
+    # BUTTON 1 ACTIONS
+    # ============================================================
+    button1:
+      name: Button 1 Actions
+      description: Define actions when pressing Button 1.
+      collapsed: true
+      input:
+        button1_single:
+          name: Single Press
+          description: Action for Button 1 single press.
+          default: []
+          selector:
+            action: {}
+
+        button1_double:
+          name: Double Press
+          description: Action for Button 1 double press.
+          default: []
+          selector:
+            action: {}
+
+        button1_long_press:
+          name: Long Press (on press)
+          description: Action triggered when Button 1 long press begins.
+          default: []
+          selector:
+            action: {}
+
+        button1_long_release:
+          name: Long Press (on release)
+          description: Action triggered when Button 1 long press is released.
+          default: []
+          selector:
+            action: {}
+
+        button1_holding_interval:
+          name: Holding Interval
+          description: Interval in seconds between repeated while-holding actions.
+          default: 0.2
+          selector:
+            number:
+              min: 0.05
+              max: 2
+              step: 0.05
+              unit_of_measurement: seconds
+
+        button1_holding_max_iterations:
+          name: Holding Max Iterations
+          description: >
+            Safety limit on the number of while-holding repetitions
+            to prevent infinite loops.
+          default: 100
+          selector:
+            number:
+              min: 1
+              max: 1000
+              step: 1
+
+        button1_while_holding:
+          name: While Holding
+          description: >
+            Action repeated at the defined interval while Button 1 is held down.
+          default: []
+          selector:
+            action: {}
+
+    # ============================================================
+    # BUTTON 2 ACTIONS
+    # ============================================================
+    button2:
+      name: Button 2 Actions
+      description: Define actions when pressing Button 2.
+      collapsed: true
+      input:
+        button2_single:
+          name: Single Press
+          description: Action for Button 2 single press.
+          default: []
+          selector:
+            action: {}
+
+        button2_double:
+          name: Double Press
+          description: Action for Button 2 double press.
+          default: []
+          selector:
+            action: {}
+
+        button2_long_press:
+          name: Long Press (on press)
+          description: Action triggered when Button 2 long press begins.
+          default: []
+          selector:
+            action: {}
+
+        button2_long_release:
+          name: Long Press (on release)
+          description: Action triggered when Button 2 long press is released.
+          default: []
+          selector:
+            action: {}
+
+        button2_holding_interval:
+          name: Holding Interval
+          description: Interval in seconds between repeated while-holding actions.
+          default: 0.2
+          selector:
+            number:
+              min: 0.05
+              max: 2
+              step: 0.05
+              unit_of_measurement: seconds
+
+        button2_holding_max_iterations:
+          name: Holding Max Iterations
+          description: >
+            Safety limit on the number of while-holding repetitions
+            to prevent infinite loops.
+          default: 100
+          selector:
+            number:
+              min: 1
+              max: 1000
+              step: 1
+
+        button2_while_holding:
+          name: While Holding
+          description: >
+            Action repeated at the defined interval while Button 2 is held down.
+          default: []
+          selector:
+            action: {}
+
+# restart so a new press interrupts any ongoing hold sequence
+mode: restart
+max_exceeded: silent
+
+variables:
+  trigger_id: "{{ trigger.id }}"
+  press_type: "{{ trigger.to_state.attributes.event_type }}"
+  button1_max_iterations: !input button1_holding_max_iterations
+  button2_max_iterations: !input button2_holding_max_iterations
+
+triggers:
+  - trigger: state
+    id: button1
+    entity_id: !input button1_event
+  - trigger: state
+    id: button2
+    entity_id: !input button2_event
+
+conditions:
+  - condition: template
+    value_template: >
+      {{ trigger.from_state.state not in ['unknown', 'unavailable'] }}
+  - condition: template
+    value_template: >
+      {{ trigger.to_state.state not in ['unknown', 'unavailable'] }}
+  - condition: template
+    value_template: >
+      {{ trigger.from_state.state != trigger.to_state.state }}
+
+actions:
+  - parallel:
+      # ----------------------------------------------------------
+      # WHILE HOLDING: BUTTON 1
+      # ----------------------------------------------------------
+      - repeat:
+          while:
+            - condition: template
+              value_template: >
+                {{ press_type == 'long_press' and trigger_id == 'button1' and
+                   states(trigger.entity_id) == trigger.to_state.state }}
+            - condition: template
+              value_template: >
+                {{ repeat.index | default(0) <= button1_max_iterations }}
+          sequence:
+            - sequence: !input button1_while_holding
+            - delay:
+                seconds: !input button1_holding_interval
+
+      # ----------------------------------------------------------
+      # WHILE HOLDING: BUTTON 2
+      # ----------------------------------------------------------
+      - repeat:
+          while:
+            - condition: template
+              value_template: >
+                {{ press_type == 'long_press' and trigger_id == 'button2' and
+                   states(trigger.entity_id) == trigger.to_state.state }}
+            - condition: template
+              value_template: >
+                {{ repeat.index | default(0) <= button2_max_iterations }}
+          sequence:
+            - sequence: !input button2_while_holding
+            - delay:
+                seconds: !input button2_holding_interval
+
+      # ----------------------------------------------------------
+      # BUTTON PRESS ACTIONS
+      # ----------------------------------------------------------
+      - choose:
+          # --- BUTTON 1 ---
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button1' and press_type == 'multi_press_1' }}
+            sequence: !input button1_single
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button1' and press_type == 'multi_press_2' }}
+            sequence: !input button1_double
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button1' and press_type == 'long_press' }}
+            sequence: !input button1_long_press
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button1' and press_type == 'long_release' }}
+            sequence: !input button1_long_release
+
+          # --- BUTTON 2 ---
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button2' and press_type == 'multi_press_1' }}
+            sequence: !input button2_single
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button2' and press_type == 'multi_press_2' }}
+            sequence: !input button2_double
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button2' and press_type == 'long_press' }}
+            sequence: !input button2_long_press
+
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ trigger_id == 'button2' and press_type == 'long_release' }}
+            sequence: !input button2_long_release

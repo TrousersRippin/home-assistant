@@ -1,0 +1,297 @@
+blueprint:
+  name: IKEA MYGGSPRAY Wireless motion sensor
+  description: >
+    Full-featured automation for the IKEA MYGGSPRAY E2494 Matter motion sensor.
+    Supports separate actions for motion detected during DAY and NIGHT periods,
+    plus independent actions for illuminance (high/low) and battery alerts.
+  domain: automation
+  author: Troy Rippin
+  input:
+    # ============================================================
+    # MOTION SENSOR
+    # ============================================================
+    motion_entity:
+      name: Motion Sensor
+      description: Select the motion sensor (binary_sensor).
+      selector:
+        entity:
+          filter:
+            - device_class: occupancy
+              domain: binary_sensor
+            - device_class: motion
+              domain: binary_sensor
+            - device_class: presence
+              domain: binary_sensor
+
+    # ============================================================
+    # DAY / NIGHT PERIODS
+    # ============================================================
+    day_start:
+      name: Day Period Start
+      description: >
+        Time when the DAY period begins (e.g. 07:00).
+        The NIGHT period begins at "Night Period Start" and ends when Day begins.
+      default: "07:00:00"
+      selector:
+        time: {}
+    night_start:
+      name: Night Period Start
+      description: >
+        Time when the NIGHT period begins (e.g. 22:00).
+        The DAY period ends here.
+      default: "22:00:00"
+      selector:
+        time: {}
+
+    # ============================================================
+    # MOTION ACTIONS
+    # ============================================================
+    no_motion_wait:
+      name: Wait Time (Motion)
+      description: Time to wait after last motion before running the "Motion Stopped" action.
+      default: 120
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+
+    motion_on_action_day:
+      name: "Action: Motion Detected (Day)"
+      description: Run when motion is detected during the DAY period.
+      default: []
+      selector:
+        action: {}
+
+    motion_on_action_night:
+      name: "Action: Motion Detected (Night)"
+      description: Run when motion is detected during the NIGHT period.
+      default: []
+      selector:
+        action: {}
+
+    motion_off_action:
+      name: "Action: Motion Stopped"
+      description: Run after motion stops and wait time elapses (same action day and night).
+      default: []
+      selector:
+        action: {}
+
+    safety_delay:
+      name: (Optional) Safety Delay
+      description: >
+        Delay in seconds to allow battery-powered lux sensors to report a fresh
+        value before the motion action runs. Set to 0 for instant triggering.
+      default: 1.5
+      selector:
+        number:
+          min: 0.0
+          max: 10.0
+          step: 0.1
+          unit_of_measurement: seconds
+
+    # ============================================================
+    # ILLUMINANCE SETTINGS
+    # ============================================================
+    illuminance_entity:
+      name: (Optional) Illuminance Sensor
+      description: Select the light sensor (sensor.illuminance).
+      default: []
+      selector:
+        entity:
+          filter:
+            domain: sensor
+            device_class: illuminance
+
+    motion_cutoff:
+      name: "(Optional) Motion Light Cutoff"
+      description: Only trigger motion actions if LUX is BELOW this value (0 to disable).
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 150000
+          unit_of_measurement: lux
+
+    illuminance_high_threshold:
+      name: "(Optional) Light High Threshold"
+      description: Trigger "Light High" action when LUX goes ABOVE this value (0 to disable).
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 150000
+          unit_of_measurement: lux
+
+    high_action:
+      name: "Action: Light High"
+      description: Run when light exceeds threshold (e.g. close curtains).
+      default: []
+      selector:
+        action: {}
+
+    illuminance_low_threshold:
+      name: "(Optional) Light Low Threshold"
+      description: Trigger "Light Low" action when LUX goes BELOW this value (0 to disable).
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 150000
+          unit_of_measurement: lux
+
+    low_action:
+      name: "Action: Light Low"
+      description: Run when light drops below threshold (e.g. open curtains).
+      default: []
+      selector:
+        action: {}
+
+    # ============================================================
+    # BATTERY SETTINGS
+    # ============================================================
+    battery_entity:
+      name: (Optional) Battery Sensor
+      description: Select the battery level sensor.
+      default: []
+      selector:
+        entity:
+          filter:
+            domain: sensor
+            device_class: battery
+
+    battery_low_threshold:
+      name: (Optional) Battery Low Level
+      description: Threshold for battery alert (%).
+      default: 30
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+
+    battery_low_action:
+      name: "Action: Battery Low"
+      description: Run when battery drops below threshold.
+      default: []
+      selector:
+        action: {}
+
+mode: parallel
+max_exceeded: silent
+
+trigger_variables:
+  motion_entity_input: !input motion_entity
+  illuminance_entity_input: !input illuminance_entity
+  motion_cutoff_input: !input motion_cutoff
+  high_threshold_input: !input illuminance_high_threshold
+  low_threshold_input: !input illuminance_low_threshold
+  battery_entity_input: !input battery_entity
+  battery_threshold_input: !input battery_low_threshold
+  safety_delay_input: !input safety_delay
+  day_start_input: !input day_start
+  night_start_input: !input night_start
+
+triggers:
+  - trigger: state
+    entity_id: !input motion_entity
+    from: "off"
+    to: "on"
+    id: motion_on
+  - trigger: state
+    entity_id: !input motion_entity
+    from: "on"
+    to: "off"
+    for:
+      seconds: !input no_motion_wait
+    id: motion_off
+  - trigger: template
+    value_template: >
+      {{ high_threshold_input | float(0) > 0 and 
+         illuminance_entity_input not in [none, [], ''] and
+         states(illuminance_entity_input) | is_number and 
+         states(illuminance_entity_input) | float(0) > high_threshold_input | float(100000) }}
+    id: light_high
+  - trigger: template
+    value_template: >
+      {{ low_threshold_input | float(0) > 0 and 
+         illuminance_entity_input not in [none, [], ''] and
+         states(illuminance_entity_input) | is_number and 
+         states(illuminance_entity_input) | float(100000) < low_threshold_input | float(-1) }}
+    id: light_low
+  - trigger: template
+    value_template: >
+      {{ battery_entity_input not in [none, [], ''] and
+         states(battery_entity_input) | is_number and 
+         states(battery_entity_input) | float(100) < battery_threshold_input | float(-1) }}
+    id: battery_low
+
+actions:
+  - choose:
+
+      # ----------------------------------------------------------
+      # MOTION ON
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: motion_on
+        sequence:
+          # Safety delay (only when lux cutoff is active)
+          - delay:
+              seconds: >-
+                {% set cutoff = motion_cutoff_input | float(0) %}
+                {% if cutoff == 0 or illuminance_entity_input in [none, [], ''] %}
+                  0
+                {% else %}
+                  {{ safety_delay_input | float(1.5) }}
+                {% endif %}
+          # Lux cutoff check
+          - condition: template
+            value_template: >
+              {% set cutoff = motion_cutoff_input | float(0) %}
+              {% if cutoff == 0 %}
+                true
+              {% else %}
+                {% set lux = states(illuminance_entity_input) | float(-1) %}
+                {{ lux == -1 or lux <= cutoff }}
+              {% endif %}
+          # Day/night branch
+          - choose:
+              - conditions:
+                  - condition: time
+                    after: !input day_start
+                    before: !input night_start
+                sequence: !input motion_on_action_day
+            default: !input motion_on_action_night
+
+      # ----------------------------------------------------------
+      # MOTION OFF
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: motion_off
+        sequence: !input motion_off_action
+
+      # ----------------------------------------------------------
+      # LIGHT HIGH
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: light_high
+        sequence: !input high_action
+
+      # ----------------------------------------------------------
+      # LIGHT LOW
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: light_low
+        sequence: !input low_action
+
+      # ----------------------------------------------------------
+      # BATTERY LOW
+      # ----------------------------------------------------------
+      - conditions:
+          - condition: trigger
+            id: battery_low
+        sequence: !input battery_low_action
