@@ -1,0 +1,18 @@
+---
+  alias: exterior_lights-sunset
+  id: '1727375317023'
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:10:00
+  condition: []
+  action:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      transition: 60
+      brightness_pct: 50
+    target:
+      entity_id: light.exterior
+  mode: single

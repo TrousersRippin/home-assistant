@@ -1,0 +1,32 @@
+---
+  alias: bedroom_lights-dressing
+  id: '1695891683109'
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:30:00
+  condition:
+  - condition: state
+    state: 'on'
+    entity_id: binary_sensor.workday_sensor
+    enabled: true
+  action:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness: 1
+    target:
+      entity_id:
+      - light.light_bulb_bedroom_03
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.light_bulb_bedroom_03
+  mode: single

@@ -1,0 +1,26 @@
+---
+  alias: cinema-stop
+  id: '1728848862274'
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.plex_for_lg_65qned826re
+    from: playing
+    to: idle
+  conditions:
+  - condition: sun
+    after: sunset
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      transition: 5
+      brightness_pct: 50
+    target:
+      entity_id:
+        - light.light_bulb_living_room_01
+        - light.light_bulb_living_room_02
+        - light.light_bulb_living_room_03
+        - light.light_bulb_backyard_01
+  mode: single

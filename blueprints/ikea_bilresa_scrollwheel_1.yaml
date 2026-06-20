@@ -1,0 +1,362 @@
+blueprint:
+  name: IKEA BILRESA Scroll wheel button
+  description: >
+    Full-featured automation for the IKEA BILRESA Scroll Wheel via Matter.
+
+    REQUIREMENTS:
+    - ENABLE Sensors: 1, 2, 4, 5, 7, 8
+    - ENABLE Events: 3, 6, 9
+    - DISABLE Sensors: 3, 6, 9 (not needed)
+
+  domain: automation
+  author: Troy Rippin
+  input:
+    # ============================================================
+    # LIGHT TARGETS (one per scroll zone / position)
+    # ============================================================
+    light_zone_1:
+      name: Zone 1 Light (or Group)
+      description: Light or group controlled when the device is in position 1 (sensors 1 & 2).
+      selector:
+        entity:
+          domain: light
+
+    light_zone_2:
+      name: Zone 2 Light (or Group)
+      description: Light or group controlled when the device is in position 2 (sensors 4 & 5).
+      selector:
+        entity:
+          domain: light
+
+    light_zone_3:
+      name: Zone 3 Light (or Group)
+      description: Light or group controlled when the device is in position 3 (sensors 7 & 8).
+      selector:
+        entity:
+          domain: light
+
+    # ============================================================
+    # SCROLL ZONE FUNCTIONS
+    # ============================================================
+    scroll_logic_1_2:
+      name: Zone 1 Scroll Function (Sensors 1 & 2)
+      default: brightness
+      selector: &scroll_options
+        select:
+          options:
+            - label: Brightness (Bright / Dark)
+              value: brightness
+            - label: Kelvin (Cool / Warm)
+              value: kelvin
+            - label: RGB Color (Rainbow)
+              value: rgb
+            - label: Presets (Work / Cozy)
+              value: preset
+
+    scroll_logic_4_5:
+      name: Zone 2 Scroll Function (Sensors 4 & 5)
+      default: kelvin
+      selector: *scroll_options
+
+    scroll_logic_7_8:
+      name: Zone 3 Scroll Function (Sensors 7 & 8)
+      default: preset
+      selector: *scroll_options
+
+    # ============================================================
+    # FINE TUNING
+    # ============================================================
+    step_pct:
+      name: Step Size: Brightness (%)
+      default: 10
+      selector:
+        number:
+          min: 1
+          max: 50
+          unit_of_measurement: "%"
+
+    step_kelvin:
+      name: Step Size: Kelvin (K)
+      default: 400
+      selector:
+        number:
+          min: 100
+          max: 1000
+          unit_of_measurement: K
+
+    step_hue:
+      name: Step Size: RGB Hue (°)
+      default: 15
+      selector:
+        number:
+          min: 5
+          max: 90
+          unit_of_measurement: "°"
+
+    val_bright:
+      name: Value: Bright (%)
+      default: 80
+      selector:
+        number:
+          min: 1
+          max: 100
+          unit_of_measurement: "%"
+
+    val_dim:
+      name: Value: Dim (%)
+      default: 20
+      selector:
+        number:
+          min: 1
+          max: 100
+          unit_of_measurement: "%"
+
+    val_cold:
+      name: Value: Cool (K)
+      default: 4000
+      selector:
+        number:
+          min: 2000
+          max: 6500
+          unit_of_measurement: K
+
+    val_warm:
+      name: Value: Warm (K)
+      default: 2200
+      selector:
+        number:
+          min: 2000
+          max: 6500
+          unit_of_measurement: K
+
+    # ============================================================
+    # ENTITY MAPPING
+    # ============================================================
+    sensor_1:
+      name: Sensor 1 (Look for '(1)')
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_2:
+      name: Sensor 2 (Look for '(2)')
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_3:
+      name: Sensor 3 — Scroll Wheel Click (Look for '(3)')
+      description: This sensor fires when the scroll wheel itself is clicked.
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_4:
+      name: Sensor 4 (Look for '(4)')
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_5:
+      name: Sensor 5 (Look for '(5)')
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_7:
+      name: Sensor 7 (Look for '(7)')
+      selector:
+        entity:
+          domain: sensor
+
+    sensor_8:
+      name: Sensor 8 (Look for '(8)')
+      selector:
+        entity:
+          domain: sensor
+
+mode: single
+max_exceeded: silent
+
+variables:
+  # Light targets per zone
+  light_1: !input light_zone_1
+  light_2: !input light_zone_2
+  light_3: !input light_zone_3
+
+  # Scroll zone functions
+  m_sc_1: !input scroll_logic_1_2
+  m_sc_2: !input scroll_logic_4_5
+  m_sc_3: !input scroll_logic_7_8
+
+  # Step and preset values
+  s_p: !input step_pct
+  s_k: !input step_kelvin
+  s_h: !input step_hue
+  v_bri: !input val_bright
+  v_dim: !input val_dim
+  v_cold: !input val_cold
+  v_warm: !input val_warm
+
+triggers:
+  # ----------------------------------------------------------
+  # SCROLL ZONE 1
+  # ----------------------------------------------------------
+  - trigger: state
+    entity_id: !input sensor_1
+    id: sc_1_up
+  - trigger: state
+    entity_id: !input sensor_2
+    id: sc_1_down
+
+  # ----------------------------------------------------------
+  # SCROLL ZONE 2
+  # ----------------------------------------------------------
+  - trigger: state
+    entity_id: !input sensor_4
+    id: sc_2_down
+  - trigger: state
+    entity_id: !input sensor_5
+    id: sc_2_up
+
+  # ----------------------------------------------------------
+  # SCROLL ZONE 3
+  # ----------------------------------------------------------
+  - trigger: state
+    entity_id: !input sensor_7
+    id: sc_3_up
+  - trigger: state
+    entity_id: !input sensor_8
+    id: sc_3_down
+
+  # ----------------------------------------------------------
+  # SCROLL WHEEL CLICK
+  # ----------------------------------------------------------
+  - trigger: state
+    entity_id: !input sensor_3
+    id: wheel_click
+
+conditions:
+  - condition: template
+    value_template: >-
+      {{ trigger.from_state is defined and trigger.to_state is defined and
+         trigger.from_state.state not in ['unknown', 'unavailable'] and
+         trigger.to_state.state not in ['unknown', 'unavailable'] }}
+
+actions:
+  # ============================================================
+  # SCROLL LOGIC
+  # ============================================================
+  - choose:
+      - conditions: "{{ 'sc_' in trigger.id }}"
+        sequence:
+          - variables:
+              direction: >
+                {% if '_up' in trigger.id %} 1
+                {% else %} -1
+                {% endif %}
+              active_func: >
+                {% if 'sc_1' in trigger.id %} {{ m_sc_1 }}
+                {% elif 'sc_2' in trigger.id %} {{ m_sc_2 }}
+                {% elif 'sc_3' in trigger.id %} {{ m_sc_3 }}
+                {% endif %}
+              active_light: >
+                {% if 'sc_1' in trigger.id %} {{ light_1 }}
+                {% elif 'sc_2' in trigger.id %} {{ light_2 }}
+                {% elif 'sc_3' in trigger.id %} {{ light_3 }}
+                {% endif %}
+
+          - choose:
+              # --------------------------------------------------
+              # BRIGHTNESS
+              # --------------------------------------------------
+              - conditions: "{{ active_func == 'brightness' }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: "{{ active_light }}"
+                    data:
+                      brightness_step_pct: "{{ (s_p | float(default=10)) * direction }}"
+                      transition: 0
+
+              # --------------------------------------------------
+              # KELVIN
+              # --------------------------------------------------
+              - conditions: "{{ active_func == 'kelvin' }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: "{{ active_light }}"
+                    data:
+                      color_temp_kelvin: >
+                        {% set current = state_attr(active_light, 'color_temp_kelvin') | int(default=3000) %}
+                        {% set step = s_k | int(default=400) %}
+                        {% if direction == 1 %} {{ ([current + step, 6500] | min) | int }}
+                        {% else %} {{ ([current - step, 2000] | max) | int }}
+                        {% endif %}
+                      transition: 0
+
+              # --------------------------------------------------
+              # RGB
+              # --------------------------------------------------
+              - conditions: "{{ active_func == 'rgb' }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: "{{ active_light }}"
+                    data:
+                      hs_color: >
+                        {% set current_hs = state_attr(active_light, 'hs_color') %}
+                        {% set h = current_hs[0] | float(default=0) if current_hs is not none else 0 %}
+                        {% set s = current_hs[1] | float(default=100) if current_hs is not none else 100 %}
+                        {% set step = s_h | float(default=15) %}
+                        {{ [(h + (step * direction)) % 360, s] }}
+                      transition: 0
+
+              # --------------------------------------------------
+              # PRESETS
+              # --------------------------------------------------
+              - conditions: "{{ active_func == 'preset' }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: "{{ active_light }}"
+                    data:
+                      brightness_pct: "{{ v_bri if direction == 1 else v_dim }}"
+                      color_temp_kelvin: "{{ v_cold if direction == 1 else v_warm }}"
+                      transition: 1
+
+  # ============================================================
+  # SCROLL WHEEL CLICK — TOGGLE ACTIVE ZONE LIGHT
+  # ============================================================
+  - choose:
+      - conditions: "{{ trigger.id == 'wheel_click' }}"
+        sequence:
+          - variables:
+              # Determine which zone is active by checking which sensor
+              # pair last changed state most recently.
+              active_light: >
+                {% set t1 = [states[trigger.from_state.entity_id].last_changed
+                   if trigger.id == 'wheel_click' else '1970-01-01'] %}
+                {% set s1 = states[!input sensor_1].last_changed | as_datetime %}
+                {% set s2 = states[!input sensor_2].last_changed | as_datetime %}
+                {% set s4 = states[!input sensor_4].last_changed | as_datetime %}
+                {% set s5 = states[!input sensor_5].last_changed | as_datetime %}
+                {% set s7 = states[!input sensor_7].last_changed | as_datetime %}
+                {% set s8 = states[!input sensor_8].last_changed | as_datetime %}
+                {% set zone1 = [s1, s2] | max %}
+                {% set zone2 = [s4, s5] | max %}
+                {% set zone3 = [s7, s8] | max %}
+                {% if zone1 >= zone2 and zone1 >= zone3 %} {{ light_1 }}
+                {% elif zone2 >= zone1 and zone2 >= zone3 %} {{ light_2 }}
+                {% else %} {{ light_3 }}
+                {% endif %}
+          - action: light.toggle
+            target:
+              entity_id: "{{ active_light }}"
+            data:
+              transition: 0.5
+
+  # V1.0.1+ FIX: 150ms dead-time after any action to suppress switch bouncing
+  - delay:
+      milliseconds: 150

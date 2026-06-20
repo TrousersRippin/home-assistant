@@ -1,0 +1,25 @@
+---
+alias: cinema-start
+id: '1728848696111'
+description: ''
+triggers:
+  - trigger: state
+    entity_id:
+      - media_player.plex_for_lg_65qned826re
+    to: playing
+conditions:
+  - condition: sun
+    after: sunset
+  - condition: template
+    value_template: >
+      {{ state_attr('media_player.plex_for_lg_65qned826re', 'media_duration') | int(0) > 3600 }}
+actions:
+  - action: light.turn_off
+    metadata: {}
+    data:
+      transition: 5
+    target:
+      entity_id:
+        - light.living_room
+        - light.light_bulb_backyard_01
+mode: single
