@@ -1,15 +1,21 @@
 blueprint:
-  name: IKEA BILRESA Scroll wheel button
+  name: IKEA Bilresa Scrollwheel - Three Light Control V2.0
   description: >
-    Full-featured automation for the IKEA BILRESA Scroll Wheel via Matter.
+    Light controller for the IKEA Bilresa Smart Scroll Wheel via Matter.
+    (NOT for Media/Volume! NOT for the 2-Button Remote!)
+
+    Each scroll zone controls a separate light or group, selected by the
+    three-position button on the device. The scroll wheel click toggles
+    the currently active light on or off.
 
     REQUIREMENTS:
-    - ENABLE Sensors: 1, 2, 4, 5, 7, 8
-    - ENABLE Events: 3, 6, 9
-    - DISABLE Sensors: 3, 6, 9 (not needed)
+    - ENABLE Sensors: 1, 2, 3, 4, 5, 7, 8
+    - DISABLE Sensors: 6, 9 (not needed)
 
+    HELPER GROUP:
+    If a zone controls multiple lights, use a Helper Group as the target.
+    Directly controlling multiple entities can cause sync issues.
   domain: automation
-  author: Troy Rippin
   input:
     # ============================================================
     # LIGHT TARGETS (one per scroll zone / position)
@@ -67,7 +73,7 @@ blueprint:
     # FINE TUNING
     # ============================================================
     step_pct:
-      name: Step Size: Brightness (%)
+      name: "Step Size: Brightness (%)"
       default: 10
       selector:
         number:
@@ -76,7 +82,7 @@ blueprint:
           unit_of_measurement: "%"
 
     step_kelvin:
-      name: Step Size: Kelvin (K)
+      name: "Step Size: Kelvin (K)"
       default: 400
       selector:
         number:
@@ -85,7 +91,7 @@ blueprint:
           unit_of_measurement: K
 
     step_hue:
-      name: Step Size: RGB Hue (°)
+      name: "Step Size: RGB Hue (°)"
       default: 15
       selector:
         number:
@@ -94,7 +100,7 @@ blueprint:
           unit_of_measurement: "°"
 
     val_bright:
-      name: Value: Bright (%)
+      name: "Value: Bright (%)"
       default: 80
       selector:
         number:
@@ -103,7 +109,7 @@ blueprint:
           unit_of_measurement: "%"
 
     val_dim:
-      name: Value: Dim (%)
+      name: "Value: Dim (%)"
       default: 20
       selector:
         number:
@@ -112,7 +118,7 @@ blueprint:
           unit_of_measurement: "%"
 
     val_cold:
-      name: Value: Cool (K)
+      name: "Value: Cool (K)"
       default: 4000
       selector:
         number:
@@ -121,7 +127,7 @@ blueprint:
           unit_of_measurement: K
 
     val_warm:
-      name: Value: Warm (K)
+      name: "Value: Warm (K)"
       default: 2200
       selector:
         number:
