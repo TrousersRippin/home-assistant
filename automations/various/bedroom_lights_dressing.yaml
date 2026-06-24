@@ -1,0 +1,30 @@
+---
+alias: bedroom_lights_dressing
+description: ""
+triggers:
+  - trigger: time
+    at: "06:30:00"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state:
+      - "on"
+actions:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.bedroom_bulb_standing
+    data:
+      color_temp_kelvin: 3000
+      brightness_pct: 70
+  - delay:
+      hours: 0
+      minutes: 15
+      seconds: 0
+      milliseconds: 0
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.bedroom_bulb_standing
+    data: {}
+mode: single

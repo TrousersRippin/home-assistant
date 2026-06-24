@@ -1,13 +1,11 @@
 ---
-  alias: cinema-resume
-  id: '1728849024702'
+  alias: cinema_paused
   description: ''
   triggers:
   - trigger: state
     entity_id:
-    - media_player.plex_for_lg_65qned826re
-    from: paused
-    to: playing
+    - media_player.plex_for_lg
+    to: paused
     for:
       hours: 0
       minutes: 0
@@ -16,10 +14,11 @@
   - condition: sun
     after: sunset
   actions:
-  - action: light.turn_off
+  - action: light.turn_on
     metadata: {}
     data:
       transition: 1
+      brightness_pct: 50
     target:
-      entity_id: light.light_bulb_living_room_01
+      entity_id: light.living_room_bulb_window_01
   mode: single

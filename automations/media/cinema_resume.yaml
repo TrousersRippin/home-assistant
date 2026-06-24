@@ -1,0 +1,24 @@
+---
+  alias: cinema_resume
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.plex_for_lg
+    from: paused
+    to: playing
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  conditions:
+  - condition: sun
+    after: sunset
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data:
+      transition: 1
+    target:
+      entity_id: light.light_bulb_living_room_01
+  mode: single

@@ -1,18 +1,16 @@
 ---
-  alias: exterior_lights-sunset
-  id: '1727375317023'
+  alias: exterior_lights_sunrise
   description: ''
   trigger:
   - platform: sun
-    event: sunset
+    event: sunrise
     offset: 00:10:00
   condition: []
   action:
-  - action: light.turn_on
+  - action: light.turn_off
     metadata: {}
     data:
       transition: 60
-      brightness_pct: 50
     target:
       entity_id: light.exterior
   mode: single
