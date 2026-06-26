@@ -16,7 +16,7 @@ actions:
       entity_id: light.bedroom_bulb_standing
     data:
       color_temp_kelvin: 3000
-      brightness_pct: 70
+      brightness_pct: 1
   - delay:
       hours: 0
       minutes: 15

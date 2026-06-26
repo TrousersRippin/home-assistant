@@ -1,6 +1,6 @@
 ---
 alias: cinema_start
-description: ''
+description: ""
 triggers:
   - trigger: state
     entity_id:
@@ -11,7 +11,8 @@ conditions:
     after: sunset
   - condition: template
     value_template: >
-      {{ state_attr('media_player.plex_for_lg', 'media_duration') | int(0) > 3600 }}
+      {{ state_attr('media_player.plex_for_lg', 'media_duration') | int(0) >
+      3600 }}
 actions:
   - action: light.turn_off
     metadata: {}

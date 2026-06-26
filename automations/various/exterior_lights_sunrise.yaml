@@ -1,16 +1,16 @@
 ---
-  alias: exterior_lights_sunrise
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
-    offset: 00:10:00
-  condition: []
-  action:
-  - action: light.turn_off
-    metadata: {}
-    data:
-      transition: 60
-    target:
-      entity_id: light.exterior
-  mode: single
+alias: exterior_lights_sunrise
+description: ''
+trigger:
+- platform: sun
+  event: sunrise
+  offset: 00:10:00
+condition: []
+action:
+- action: light.turn_off
+  metadata: {}
+  data:
+    transition: 60
+  target:
+    entity_id: light.exterior
+mode: single

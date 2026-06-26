@@ -1,16 +1,16 @@
 ---
-  alias: cinema_stop
-  description: ''
-  triggers:
+alias: cinema_stop
+description: ""
+triggers:
   - trigger: state
     entity_id:
-    - media_player.plex_for_lg
+      - media_player.plex_for_lg
     from: playing
     to: idle
-  conditions:
+conditions:
   - condition: sun
     after: sunset
-  actions:
+actions:
   - action: light.turn_on
     metadata: {}
     data:
@@ -19,4 +19,4 @@
     target:
       entity_id:
         - light.living_room_bulb_window
-  mode: single
+mode: single

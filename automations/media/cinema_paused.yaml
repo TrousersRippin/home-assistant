@@ -1,19 +1,19 @@
 ---
-  alias: cinema_paused
-  description: ''
-  triggers:
+alias: cinema_paused
+description: ""
+triggers:
   - trigger: state
     entity_id:
-    - media_player.plex_for_lg
+      - media_player.plex_for_lg
     to: paused
     for:
       hours: 0
       minutes: 0
       seconds: 2
-  conditions:
+conditions:
   - condition: sun
     after: sunset
-  actions:
+actions:
   - action: light.turn_on
     metadata: {}
     data:
@@ -21,4 +21,4 @@
       brightness_pct: 50
     target:
       entity_id: light.living_room_bulb_window_01
-  mode: single
+mode: single
