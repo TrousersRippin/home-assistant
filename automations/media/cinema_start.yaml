@@ -1,5 +1,5 @@
 ---
-alias: cinema_start
+alias: Cinema Start
 description: ""
 triggers:
   - trigger: state
@@ -20,5 +20,5 @@ actions:
       transition: 5
     target:
       entity_id:
-        - light.living_room_bulb_window
+        - light.living_room_window_lamp
 mode: single

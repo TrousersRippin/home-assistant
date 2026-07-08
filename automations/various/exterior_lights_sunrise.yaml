@@ -1,5 +1,5 @@
 ---
-alias: exterior_lights_sunrise
+alias: Exterior Lights Sunrise
 description: ''
 trigger:
 - platform: sun

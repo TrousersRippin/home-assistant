@@ -1,5 +1,5 @@
 ---
-alias: cinema_paused
+alias: Cinema Paused
 description: ""
 triggers:
   - trigger: state
@@ -20,5 +20,5 @@ actions:
       transition: 1
       brightness_pct: 50
     target:
-      entity_id: light.living_room_bulb_window_01
+      entity_id: light.living_room_window_lamp_01
 mode: single

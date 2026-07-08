@@ -1,817 +1,162 @@
 ---
-  name: Cozy
-  id: '1695818846392'
-  entities:
-    light.light_bulb_bedroom_01:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode: brightness
-      brightness: 76
-      effect:
-      linkquality: 69
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: bedroom bulb 01
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_bedroom_02:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode: brightness
-      brightness: 76
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: bedroom bulb 02
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_bedroom_03:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: bedroom bulb 03
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_bedroom_04:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 57
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: bedroom bulb 04
-      supported_features: 44
-      state: 'off'
-    light.light_spot_hallway_01:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 60
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: hallway spot 01
-      supported_features: 44
-      state: 'off'
-    light.light_spot_hallway_02:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 54
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: hallway spot 02
-      supported_features: 44
-      state: 'off'
-    light.light_spot_hallway_03:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 54
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: hallway spot 03
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_kitchen_01:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 51
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: kitchen bulb 01
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_kitchen_02:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 72
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: kitchen bulb 02
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_kitchen_03:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      effect:
-      linkquality: 60
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: kitchen bulb 03
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_kitchen_04:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 4504
-      min_mireds: 222
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
+id: "1783441111925"
+name: Cozy
+icon: mdi:fireplace
+entities:
+  light.living_room_window_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
       - color_temp
-      color_mode: color_temp
-      brightness: 127
-      color_temp_kelvin: 2506
-      color_temp: 399
-      hs_color:
-      - 28.859
-      - 72.305
-      rgb_color:
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 3000
+    hs_color:
+      - 27.82
+      - 56.814
+    rgb_color:
+      - 255
+      - 177
+      - 110
+    xy_color:
+      - 0.496
+      - 0.383
+    entity_id:
+      - light.living_room_window_lamp_01
+      - light.living_room_window_lamp_02
+      - light.living_room_window_lamp_03
+    icon: mdi:lightbulb-group
+    friendly_name: living_room_window_lamp
+    supported_features: 32
+    state: "on"
+  light.lounge_table_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 3000
+    hs_color:
+      - 27.82
+      - 56.814
+    rgb_color:
+      - 255
+      - 177
+      - 110
+    xy_color:
+      - 0.496
+      - 0.383
+    entity_id:
+      - light.lounge_table_lamp_01
+      - light.lounge_table_lamp_02
+    icon: mdi:lightbulb-group
+    friendly_name: lounge_table_lamp
+    supported_features: 32
+    state: "on"
+  light.malin_office_wall_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
       - 255
       - 159
       - 70
-      xy_color:
+    xy_color:
       - 0.546
       - 0.389
-      effect:
-      linkquality: 63
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen bulb 04
-      supported_features: 44
-      state: 'on'
-    light.light_spot_kitchen_01:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
+    friendly_name: malin_office_wall_lamp
+    supported_features: 32
+    state: "on"
+  light.bedroom_bedside_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
       - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 51
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 01
-      supported_features: 44
-      state: 'off'
-    light.light_spot_kitchen_02:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 60
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 02
-      supported_features: 44
-      state: 'off'
-    light.light_spot_kitchen_03:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 03
-      supported_features: 44
-      state: 'off'
-    light.light_spot_kitchen_04:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 04
-      supported_features: 44
-      state: 'off'
-    light.light_spot_kitchen_05:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 05
-      supported_features: 44
-      state: 'off'
-    light.light_spot_kitchen_06:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 57
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: kitchen spot 06
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_child_bedroom_01:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      effect:
-      color_mode: brightness
-      brightness:
-      linkquality: 29
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: lily's bedroom bulb 01
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_child_bedroom_02:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      effect:
-      color_mode: brightness
-      brightness: 
-      linkquality: 40
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: lily's bedroom bulb 02
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_living_room_01:
-      min_color_temp_kelvin: 2000
-      max_color_temp_kelvin: 6666
-      min_mireds: 150
-      max_mireds: 500
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode: color_temp
-      brightness: 127
-      color_temp_kelvin: 2512
-      color_temp: 398
-      hs_color:
-      - 28.843
-      - 72.089
-      rgb_color:
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 3000
+    hs_color:
+      - 27.82
+      - 56.814
+    rgb_color:
       - 255
-      - 159
-      - 71
-      xy_color:
-      - 0.546
-      - 0.389
-      effect:
-      linkquality: 69
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: living room bulb 01
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_living_room_02:
-      min_color_temp_kelvin: 2000
-      max_color_temp_kelvin: 6666
-      min_mireds: 150
-      max_mireds: 500
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
+      - 177
+      - 110
+    xy_color:
+      - 0.496
+      - 0.383
+    entity_id:
+      - light.bedroom_bedside_lamp_01
+      - light.bedroom_bedside_lamp_02
+    icon: mdi:lightbulb-group
+    friendly_name: bedroom_bedside_lamp
+    supported_features: 32
+    state: "on"
+  light.bedroom_standing_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
       - color_temp
-      color_mode: color_temp
-      brightness: 127
-      color_temp_kelvin: 2512
-      color_temp: 398
-      hs_color:
-      - 28.843
-      - 72.089
-      rgb_color:
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 3000
+    hs_color:
+      - 27.82
+      - 56.814
+    rgb_color:
       - 255
-      - 159
-      - 71
-      xy_color:
-      - 0.546
-      - 0.389
-      effect:
-      linkquality: 51
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: living room bulb 02
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_living_room_03:
-      min_color_temp_kelvin: 2000
-      max_color_temp_kelvin: 6666
-      min_mireds: 150
-      max_mireds: 500
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
+      - 177
+      - 110
+    xy_color:
+      - 0.496
+      - 0.383
+    friendly_name: bedroom_standing_lamp
+    supported_features: 32
+    state: "on"
+  light.hallway_ceiling_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
       - color_temp
-      color_mode: color_temp
-      brightness: 127
-      color_temp_kelvin: 2512
-      color_temp: 398
-      hs_color:
-      - 28.843
-      - 72.089
-      rgb_color:
-      - 255
-      - 159
-      - 71
-      xy_color:
-      - 0.546
-      - 0.389
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: living room bulb 03
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_living_room_04:
-      min_color_temp_kelvin: 2000
-      max_color_temp_kelvin: 6666
-      min_mireds: 150
-      max_mireds: 500
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 105
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: living room bulb 04
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_living_room_05:
-      min_color_temp_kelvin: 2000
-      max_color_temp_kelvin: 6666
-      min_mireds: 150
-      max_mireds: 500
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - color_temp
-      color_mode:
-      brightness:
-      color_temp_kelvin:
-      color_temp:
-      hs_color:
-      rgb_color:
-      xy_color:
-      effect:
-      linkquality: 78
-      power_on_behavior: previous
-      update:
-        installed_version: 1124101125
-        latest_version: 1124101125
-        state: idle
-      update_available: false
-      friendly_name: living room bulb 05
-      supported_features: 44
-      state: 'off'
-    light.light_bulb_lounge_04:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode: brightness
-      brightness: 76
-      effect:
-      linkquality: 63
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: lounge bulb 04
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_lounge_05:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode: brightness
-      brightness: 76
-      effect:
-      linkquality: 75
-      power_on_behavior: previous
-      update:
-        installed_version: 16785162
-        latest_version: 16785162
-        state: idle
-      update_available: false
-      friendly_name: lounge bulb 05
-      supported_features: 44
-      state: 'on'
-    light.light_bulb_office:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - candle
-      - finish_effect
-      - stop_effect
-      - stop_hue_effect
-      supported_color_modes:
-      - brightness
-      color_mode: brightness
-      brightness: 127
-      effect:
-      linkquality: 54
-      power_on_behavior: previous
-      update:
-        installed_version: 16786696
-        latest_version: 16786696
-        state: idle
-      update_available: false
-      friendly_name: office
-      supported_features: 44
-      state: 'on'
-  icon: mdi:lamps
-  metadata: {}
+      - xy
+    color_mode: null
+    brightness: null
+    color_temp_kelvin: null
+    hs_color: null
+    rgb_color: null
+    xy_color: null
+    entity_id:
+      - light.hallway_ceiling_lamp_01
+      - light.hallway_ceiling_lamp_02
+      - light.hallway_ceiling_lamp_03
+    icon: mdi:lightbulb-group
+    friendly_name: hallway_ceiling_lamp
+    supported_features: 32
+    state: "off"
+metadata:
+  light.living_room_window_lamp:
+    entity_only: true
+  light.lounge_table_lamp:
+    entity_only: true
+  light.malin_office_wall_lamp:
+    entity_only: true
+  light.bedroom_bedside_lamp:
+    entity_only: true
+  light.bedroom_standing_lamp:
+    entity_only: true
+  light.hallway_ceiling_lamp:
+    entity_only: true
+

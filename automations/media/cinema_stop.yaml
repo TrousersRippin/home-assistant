@@ -1,5 +1,5 @@
 ---
-alias: cinema_stop
+alias: Cinema Stop
 description: ""
 triggers:
   - trigger: state
@@ -18,5 +18,5 @@ actions:
       brightness_pct: 50
     target:
       entity_id:
-        - light.living_room_bulb_window
+        - light.living_room_window_lamp
 mode: single
