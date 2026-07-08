@@ -1,0 +1,238 @@
+views:
+  - path: default_view
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: person.troy
+            name: Troy
+            show_entity_picture: true
+            hide_state: true
+            vertical: true
+            features_position: bottom
+          - type: tile
+            entity: person.malin
+            name: Malin
+            show_entity_picture: true
+            hide_state: true
+            vertical: true
+            features_position: bottom
+          - type: tile
+            entity: person.lily
+            name: Lily
+            show_entity_picture: true
+            hide_state: true
+            vertical: true
+            features_position: bottom
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: scene.arrive
+            name: Arrive
+            color: blue
+            show_entity_picture: false
+            hide_state: true
+            vertical: true
+            tap_action:
+              action: toggle
+            features_position: bottom
+          - type: tile
+            entity: scene.cozy
+            name: Cozy
+            color: deep-orange
+            show_entity_picture: false
+            hide_state: true
+            vertical: true
+            tap_action:
+              action: toggle
+            features_position: bottom
+          - type: tile
+            entity: scene.wake
+            name: Wake
+            icon: mdi:weather-sunset-up
+            color: amber
+            hide_state: true
+            vertical: true
+            tap_action:
+              action: toggle
+            features_position: bottom
+          - type: tile
+            entity: light.all
+            name: All
+            icon: ""
+            show_entity_picture: false
+            hide_state: true
+            vertical: true
+            tap_action:
+              action: perform-action
+              perform_action: light.turn_off
+              target:
+                entity_id:
+                  - light.all
+            hold_action:
+              action: perform-action
+              perform_action: light.turn_on
+              target:
+                entity_id: light.all
+              data:
+                color_temp_kelvin: 3000
+                brightness_pct: 100
+            icon_tap_action:
+              action: none
+            features_position: bottom
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.kitchen
+                name:
+                  type: area
+                icon: mdi:stove
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+              - type: tile
+                entity: light.living_room
+                name:
+                  type: area
+                icon: mdi:sofa-outline
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.troy_office
+                name:
+                  type: area
+                icon: mdi:chair-rolling
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+              - type: tile
+                entity: light.malin_office
+                name:
+                  type: area
+                icon: mdi:chair-rolling
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.hallway
+                name:
+                  type: area
+                icon: mdi:image-frame
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+              - type: tile
+                entity: light.lounge
+                name:
+                  type: area
+                icon: mdi:sofa-single-outline
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.bedroom
+                name:
+                  type: area
+                icon: mdi:bed-king-outline
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+              - type: tile
+                entity: light.lily_bedroom
+                name:
+                  type: area
+                icon: mdi:bed-single-outline
+                show_entity_picture: false
+                hide_state: false
+                vertical: false
+                tap_action:
+                  action: toggle
+                icon_tap_action:
+                  action: more-info
+                features:
+                  - type: light-brightness
+                features_position: bottom
+    badges:
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: sensor.hallway_temp_sensor_temperature
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: sensor.lounge_temp_sensor_temperature
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content: temperature
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        show_entity_picture: false
+        state_content: humidity
+    type: masonry
+    icon: mdi:cellphone-text

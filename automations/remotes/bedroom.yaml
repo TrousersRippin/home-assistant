@@ -1,0 +1,44 @@
+---
+alias: Bedroom Remote
+description: ""
+use_blueprint:
+  path: TrousersRippin/ikea_bilresa_button.yaml
+  input:
+    button1_event:
+      - event.bedroom_remote_button_1
+    button2_event:
+      - event.bedroom_remote_button_2
+    button1_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_step_pct: 25
+        target:
+          entity_id:
+            - light.bedroom_bedside_lamp
+            - light.bedroom_standing_lamp
+    button1_double:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 100
+        target:
+          entity_id: light.bedroom
+    button2_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_step_pct: -25
+        target:
+          entity_id:
+            - light.bedroom_bedside_lamp
+            - light.bedroom_standing_lamp
+    button2_double:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom

@@ -1,0 +1,52 @@
+---
+alias: Troy's Office Remote
+description: ""
+use_blueprint:
+  path: TrousersRippin/ikea_bilresa_button.yaml
+  input:
+    button1_event:
+      - event.troy_office_remote_button_1
+    button2_event:
+      - event.troy_office_remote_button_2
+    button1_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_step_pct: 25
+        target:
+          entity_id: light.troy_office_standing_lamp
+    button1_double:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 100
+        target:
+          entity_id: light.troy_office
+    button1_long_press:
+      - device_id: 66a697adf0cb0c787489e2af81ff3060
+        domain: cover
+        entity_id: 5d693bf06bd7d5143674e95f92fea832
+        type: set_position
+        position: 70
+    button2_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_step_pct: -25
+        target:
+          entity_id: light.troy_office_standing_lamp
+    button2_double:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.troy_office
+    button2_long_press:
+      - device_id: 66a697adf0cb0c787489e2af81ff3060
+        domain: cover
+        entity_id: 5d693bf06bd7d5143674e95f92fea832
+        type: set_position
+        position: 50

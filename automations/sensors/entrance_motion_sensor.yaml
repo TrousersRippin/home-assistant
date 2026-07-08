@@ -1,0 +1,52 @@
+---
+alias: Entrance Motion Sensor
+description: ""
+use_blueprint:
+  path: TrousersRippin/ikea_myggspray.yaml
+  input:
+    motion_entity: binary_sensor.entrance_mtn_sensor_occupancy
+    no_motion_wait: 30
+    motion_on_action_day:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 75
+        target:
+          entity_id: light.entrance_ceiling_lamp
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 75
+        target:
+          entity_id: light.pantry_ceiling_lamp
+    motion_on_action_night:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 75
+        target:
+          entity_id: light.entrance_ceiling_lamp
+      - action: light.turn_on
+        metadata: {}
+        data:
+          color_temp_kelvin: 3000
+          brightness_pct: 75
+        target:
+          entity_id: light.pantry_ceiling_lamp
+    motion_off_action:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id:
+            - light.entrance_ceiling_lamp
+            - light.pantry_ceiling_lamp
+    battery_entity: sensor.entrance_mtn_sensor_battery
+    battery_low_action:
+      - action: notify.mobile_app_troys_iphone_17_pro
+        metadata: {}
+        data:
+          message: low battery!
