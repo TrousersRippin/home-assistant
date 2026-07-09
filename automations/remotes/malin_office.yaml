@@ -20,7 +20,7 @@ use_blueprint:
         metadata: {}
         data:
           color_temp_kelvin: 2500
-          brightness_step_pct: 25
+          brightness_pct: 70
         target:
           entity_id: light.malin_office_wall_lamp
     button1_double:
@@ -31,10 +31,9 @@ use_blueprint:
         target:
           entity_id: light.malin_office
     button2_single:
-      - action: light.turn_on
+      - action: light.turn_off
         metadata: {}
-        data:
-          brightness_step_pct: -25
+        data: {}
         target:
           entity_id:
             - light.malin_office_standing_lamp
