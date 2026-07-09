@@ -1,3 +1,4 @@
+---
 blueprint:
   name: IKEA MYGGSPRAY Wireless motion sensor
   description: >
@@ -207,22 +208,22 @@ triggers:
     id: motion_off
   - trigger: template
     value_template: >
-      {{ high_threshold_input | float(0) > 0 and 
+      {{ high_threshold_input | float(0) > 0 and
          illuminance_entity_input not in [none, [], ''] and
-         states(illuminance_entity_input) | is_number and 
+         states(illuminance_entity_input) | is_number and
          states(illuminance_entity_input) | float(0) > high_threshold_input | float(100000) }}
     id: light_high
   - trigger: template
     value_template: >
-      {{ low_threshold_input | float(0) > 0 and 
+      {{ low_threshold_input | float(0) > 0 and
          illuminance_entity_input not in [none, [], ''] and
-         states(illuminance_entity_input) | is_number and 
+         states(illuminance_entity_input) | is_number and
          states(illuminance_entity_input) | float(100000) < low_threshold_input | float(-1) }}
     id: light_low
   - trigger: template
     value_template: >
       {{ battery_entity_input not in [none, [], ''] and
-         states(battery_entity_input) | is_number and 
+         states(battery_entity_input) | is_number and
          states(battery_entity_input) | float(100) < battery_threshold_input | float(-1) }}
     id: battery_low
 
