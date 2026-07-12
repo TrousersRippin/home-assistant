@@ -146,6 +146,28 @@ entities:
     friendly_name: hallway_ceiling_lamp
     supported_features: 32
     state: "off"
+  light.kitchen_speaker_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 128
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
+      - 255
+      - 159
+      - 70
+    xy_color:
+      - 0.546
+      - 0.389
+    friendly_name: kitchen_speaker_lamp
+    supported_features: 32
+    state: "on"
 metadata:
   light.living_room_window_lamp:
     entity_only: true
@@ -158,4 +180,6 @@ metadata:
   light.bedroom_standing_lamp:
     entity_only: true
   light.hallway_ceiling_lamp:
+    entity_only: true
+  light.kitchen_speaker_lamp:
     entity_only: true
