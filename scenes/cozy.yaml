@@ -1,7 +1,6 @@
 ---
 id: "1783441111925"
 name: Cozy
-icon: mdi:fireplace
 entities:
   light.living_room_window_lamp:
     min_color_temp_kelvin: 2202
@@ -26,7 +25,6 @@ entities:
       - light.living_room_window_lamp_01
       - light.living_room_window_lamp_02
       - light.living_room_window_lamp_03
-    icon: mdi:lightbulb-group
     friendly_name: living_room_window_lamp
     supported_features: 32
     state: "on"
@@ -37,7 +35,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 192
+    brightness: 128
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -52,7 +50,6 @@ entities:
     entity_id:
       - light.lounge_table_lamp_01
       - light.lounge_table_lamp_02
-    icon: mdi:lightbulb-group
     friendly_name: lounge_table_lamp
     supported_features: 32
     state: "on"
@@ -100,7 +97,6 @@ entities:
     entity_id:
       - light.bedroom_bedside_lamp_01
       - light.bedroom_bedside_lamp_02
-    icon: mdi:lightbulb-group
     friendly_name: bedroom_bedside_lamp
     supported_features: 32
     state: "on"
@@ -141,8 +137,7 @@ entities:
     entity_id:
       - light.hallway_ceiling_lamp_01
       - light.hallway_ceiling_lamp_02
-      - light.hallway_ceiling_lamp_03
-    icon: mdi:lightbulb-group
+      - light.kajplats_gu10_ws_575lm_3
     friendly_name: hallway_ceiling_lamp
     supported_features: 32
     state: "off"
@@ -168,6 +163,7 @@ entities:
     friendly_name: kitchen_speaker_lamp
     supported_features: 32
     state: "on"
+icon: mdi:fireplace
 metadata:
   light.living_room_window_lamp:
     entity_only: true
