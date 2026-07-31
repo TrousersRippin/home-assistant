@@ -40,6 +40,7 @@ views:
           - type: tile
             entity: scene.cozy
             name: Cozy
+            icon: mdi:fireplace
             color: deep-orange
             show_entity_picture: false
             hide_state: true
@@ -104,7 +105,7 @@ views:
                 entity: light.living_room
                 name:
                   type: area
-                icon: mdi:sofa-outline
+                icon: mdi:sofa
                 show_entity_picture: false
                 hide_state: false
                 vertical: false
@@ -168,7 +169,7 @@ views:
                 entity: light.lounge
                 name:
                   type: area
-                icon: mdi:sofa-single-outline
+                icon: mdi:sofa-single
                 show_entity_picture: false
                 hide_state: false
                 vertical: false
@@ -185,7 +186,7 @@ views:
                 entity: light.bedroom
                 name:
                   type: area
-                icon: mdi:bed-king-outline
+                icon: mdi:bed-king
                 show_entity_picture: false
                 hide_state: false
                 vertical: false
@@ -200,7 +201,7 @@ views:
                 entity: light.lily_bedroom
                 name:
                   type: area
-                icon: mdi:bed-single-outline
+                icon: mdi:bed-single
                 show_entity_picture: false
                 hide_state: false
                 vertical: false
