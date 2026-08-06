@@ -29,7 +29,7 @@ use_blueprint:
         domain: cover
         entity_id: 5d693bf06bd7d5143674e95f92fea832
         type: set_position
-        position: 70
+        position: 65
     button2_single:
       - action: light.turn_on
         metadata: {}
