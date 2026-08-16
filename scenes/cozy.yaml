@@ -1,6 +1,7 @@
 ---
 id: "1783441111925"
 name: Cozy
+icon: mdi:fireplace
 entities:
   light.living_room_window_lamp:
     min_color_temp_kelvin: 2202
@@ -28,6 +29,69 @@ entities:
     friendly_name: living_room_window_lamp
     supported_features: 32
     state: "on"
+  light.malin_office_wall_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 192
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
+      - 255
+      - 159
+      - 70
+    xy_color:
+      - 0.546
+      - 0.389
+    friendly_name: malin_office_wall_lamp
+    supported_features: 32
+    state: "on"
+  light.kitchen_speaker_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 128
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
+      - 255
+      - 159
+      - 70
+    xy_color:
+      - 0.546
+      - 0.389
+    friendly_name: kitchen_speaker_lamp
+    supported_features: 32
+    state: "on"
+  light.hallway_ceiling_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: null
+    brightness: null
+    color_temp_kelvin: null
+    hs_color: null
+    rgb_color: null
+    xy_color: null
+    entity_id:
+      - light.hallway_ceiling_lamp_01
+      - light.hallway_ceiling_lamp_02
+      - light.kajplats_gu10_ws_575lm_3
+    friendly_name: hallway_ceiling_lamp
+    supported_features: 32
+    state: "off"
   light.lounge_table_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -51,28 +115,6 @@ entities:
       - light.lounge_table_lamp_01
       - light.lounge_table_lamp_02
     friendly_name: lounge_table_lamp
-    supported_features: 32
-    state: "on"
-  light.malin_office_wall_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 192
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    friendly_name: malin_office_wall_lamp
     supported_features: 32
     state: "on"
   light.bedroom_bedside_lamp:
@@ -122,60 +164,18 @@ entities:
     friendly_name: bedroom_standing_lamp
     supported_features: 32
     state: "on"
-  light.hallway_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    entity_id:
-      - light.hallway_ceiling_lamp_01
-      - light.hallway_ceiling_lamp_02
-      - light.kajplats_gu10_ws_575lm_3
-    friendly_name: hallway_ceiling_lamp
-    supported_features: 32
-    state: "off"
-  light.kitchen_speaker_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 128
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    friendly_name: kitchen_speaker_lamp
-    supported_features: 32
-    state: "on"
-icon: mdi:fireplace
 metadata:
   light.living_room_window_lamp:
     entity_only: true
-  light.lounge_table_lamp:
-    entity_only: true
   light.malin_office_wall_lamp:
+    entity_only: true
+  light.kitchen_speaker_lamp:
+    entity_only: true
+  light.hallway_ceiling_lamp:
+    entity_only: true
+  light.lounge_table_lamp:
     entity_only: true
   light.bedroom_bedside_lamp:
     entity_only: true
   light.bedroom_standing_lamp:
-    entity_only: true
-  light.hallway_ceiling_lamp:
-    entity_only: true
-  light.kitchen_speaker_lamp:
     entity_only: true

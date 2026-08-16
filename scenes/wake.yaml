@@ -1,7 +1,34 @@
 ---
 id: "1783441038520"
 name: Wake
+icon: mdi:weather-sunset-up
 entities:
+  light.kitchen:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 89
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.468
+      - 66.788
+    rgb_color:
+      - 255
+      - 165
+      - 85
+    xy_color:
+      - 0.529
+      - 0.387
+    entity_id:
+      - light.kitchen_ceiling_lamp
+      - light.kitchen_table_lamp
+      - light.kitchen_speaker_lamp
+    friendly_name: kitchen
+    supported_features: 32
+    state: "on"
   light.hallway_ceiling_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -53,37 +80,10 @@ entities:
     friendly_name: lounge_table_lamp
     supported_features: 32
     state: "on"
-  light.kitchen:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 89
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.468
-      - 66.788
-    rgb_color:
-      - 255
-      - 165
-      - 85
-    xy_color:
-      - 0.529
-      - 0.387
-    entity_id:
-      - light.kitchen_ceiling_lamp
-      - light.kitchen_table_lamp
-      - light.kitchen_speaker_lamp
-    friendly_name: kitchen
-    supported_features: 32
-    state: "on"
-icon: mdi:weather-sunset-up
 metadata:
+  light.kitchen:
+    entity_only: true
   light.hallway_ceiling_lamp:
     entity_only: true
   light.lounge_table_lamp:
-    entity_only: true
-  light.kitchen:
     entity_only: true
