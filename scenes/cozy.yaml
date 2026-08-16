@@ -1,5 +1,4 @@
----
-id: "1783441111925"
+id: '1783441111925'
 name: Cozy
 icon: mdi:fireplace
 entities:
@@ -11,7 +10,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 192
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -28,7 +27,7 @@ entities:
       - light.living_room_window_lamp_03
     friendly_name: living_room_window_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.malin_office_wall_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -50,7 +49,48 @@ entities:
       - 0.389
     friendly_name: malin_office_wall_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
+  light.kitchen_ceiling_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: null
+    brightness: null
+    color_temp_kelvin: null
+    hs_color: null
+    rgb_color: null
+    xy_color: null
+    entity_id:
+      - light.kitchen_ceiling_lamp_01
+      - light.kitchen_ceiling_lamp_02
+      - light.kitchen_ceiling_lamp_03
+      - light.kitchen_ceiling_lamp_04
+      - light.kitchen_ceiling_lamp_05
+      - light.kitchen_ceiling_lamp_06
+    friendly_name: kitchen_ceiling_lamp
+    supported_features: 32
+    state: 'off'
+  light.kitchen_table_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: null
+    brightness: null
+    color_temp_kelvin: null
+    hs_color: null
+    rgb_color: null
+    xy_color: null
+    entity_id:
+      - light.kitchen_table_lamp_01
+      - light.kitchen_table_lamp_02
+      - light.kitchen_table_lamp_03
+    friendly_name: kitchen_table_lamp
+    supported_features: 32
+    state: 'off'
   light.kitchen_speaker_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -72,7 +112,7 @@ entities:
       - 0.389
     friendly_name: kitchen_speaker_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.hallway_ceiling_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -91,7 +131,7 @@ entities:
       - light.kajplats_gu10_ws_575lm_3
     friendly_name: hallway_ceiling_lamp
     supported_features: 32
-    state: "off"
+    state: 'off'
   light.lounge_table_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -100,7 +140,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 128
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -116,7 +156,7 @@ entities:
       - light.lounge_table_lamp_02
     friendly_name: lounge_table_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.bedroom_bedside_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -125,7 +165,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 192
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -141,7 +181,7 @@ entities:
       - light.bedroom_bedside_lamp_02
     friendly_name: bedroom_bedside_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.bedroom_standing_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -150,7 +190,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 192
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -163,11 +203,15 @@ entities:
       - 0.383
     friendly_name: bedroom_standing_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
 metadata:
   light.living_room_window_lamp:
     entity_only: true
   light.malin_office_wall_lamp:
+    entity_only: true
+  light.kitchen_ceiling_lamp:
+    entity_only: true
+  light.kitchen_table_lamp:
     entity_only: true
   light.kitchen_speaker_lamp:
     entity_only: true
