@@ -1,7 +1,6 @@
 ---
-id: "1783441209313"
+id: '1783441209313'
 name: Arrive
-icon: mdi:lamps
 entities:
   light.living_room:
     min_color_temp_kelvin: 2202
@@ -10,7 +9,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 255
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -23,15 +22,11 @@ entities:
       - 0.496
       - 0.383
     entity_id:
-      - light.living_room_standing_lamp_01
-      - light.living_room_standing_lamp_02
-      - light.living_room_window_lamp_01
-      - light.living_room_window_lamp_02
-      - light.living_room_window_lamp_03
-    icon: mdi:lightbulb-group
+      - light.living_room_window_lamp
+      - light.living_room_standing_lamp
     friendly_name: living_room
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.troy_office_standing_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -39,7 +34,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 192
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -54,10 +49,9 @@ entities:
     entity_id:
       - light.troy_office_standing_lamp_01
       - light.troy_office_standing_lamp_02
-    icon: mdi:lightbulb-group
     friendly_name: troy_office_standing_lamp
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.malin_office_wall_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -65,7 +59,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 192
+    brightness: 204
     color_temp_kelvin: 2500
     hs_color:
       - 28.874
@@ -79,15 +73,15 @@ entities:
       - 0.389
     friendly_name: malin_office_wall_lamp
     supported_features: 32
-    state: "on"
-  light.hallway_ceiling_lamp:
+    state: 'on'
+  light.hallway:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
     supported_color_modes:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 255
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -100,13 +94,36 @@ entities:
       - 0.496
       - 0.383
     entity_id:
-      - light.hallway_ceiling_lamp_01
-      - light.hallway_ceiling_lamp_02
-      - light.kajplats_gu10_ws_575lm_3
-    icon: mdi:lightbulb-group
-    friendly_name: hallway_ceiling_lamp
+      - light.hallway_ceiling_lamp
+    friendly_name: hallway
     supported_features: 32
-    state: "on"
+    state: 'on'
+  light.kitchen:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 204
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.468
+      - 66.788
+    rgb_color:
+      - 255
+      - 165
+      - 85
+    xy_color:
+      - 0.529
+      - 0.387
+    entity_id:
+      - light.kitchen_ceiling_lamp
+      - light.kitchen_table_lamp
+      - light.kitchen_speaker_lamp
+    friendly_name: kitchen
+    supported_features: 32
+    state: 'on'
   light.lily_bedroom:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -114,7 +131,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 255
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -129,10 +146,9 @@ entities:
     entity_id:
       - light.lily_bedroom_ceiling_lamp
       - light.lily_bedroom_window_lamp
-    icon: mdi:lightbulb-group
     friendly_name: lily_bedroom
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.lounge:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -140,7 +156,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 255
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -155,10 +171,9 @@ entities:
     entity_id:
       - light.lounge_standing_lamp
       - light.lounge_table_lamp
-    icon: mdi:lightbulb-group
     friendly_name: lounge
     supported_features: 32
-    state: "on"
+    state: 'on'
   light.bedroom:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
@@ -166,7 +181,7 @@ entities:
       - color_temp
       - xy
     color_mode: color_temp
-    brightness: 255
+    brightness: 204
     color_temp_kelvin: 3000
     hs_color:
       - 27.82
@@ -182,10 +197,10 @@ entities:
       - light.bedroom_ceiling_lamp
       - light.bedroom_standing_lamp
       - light.bedroom_bedside_lamp
-    icon: mdi:lightbulb-group
     friendly_name: bedroom
     supported_features: 32
-    state: "on"
+    state: 'on'
+icon: mdi:lamps
 metadata:
   light.living_room:
     entity_only: true
@@ -193,8 +208,9 @@ metadata:
     entity_only: true
   light.malin_office_wall_lamp:
     entity_only: true
-
-  light.hallway_ceiling_lamp:
+  light.hallway:
+    entity_only: true
+  light.kitchen:
     entity_only: true
   light.lily_bedroom:
     entity_only: true

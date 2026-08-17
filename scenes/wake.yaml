@@ -1,7 +1,6 @@
 ---
 id: "1783441038520"
 name: Wake
-icon: mdi:weather-sunset-up
 entities:
   light.kitchen:
     min_color_temp_kelvin: 2202
@@ -51,7 +50,7 @@ entities:
     entity_id:
       - light.hallway_ceiling_lamp_01
       - light.hallway_ceiling_lamp_02
-      - light.kajplats_gu10_ws_575lm_3
+      - light.hallway_ceiling_lamp_03
     friendly_name: hallway_ceiling_lamp
     supported_features: 32
     state: "on"
@@ -80,6 +79,7 @@ entities:
     friendly_name: lounge_table_lamp
     supported_features: 32
     state: "on"
+icon: mdi:weather-sunset-up
 metadata:
   light.kitchen:
     entity_only: true
