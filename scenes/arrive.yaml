@@ -10,7 +10,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -35,7 +35,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -82,7 +82,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -98,7 +98,36 @@ entities:
     friendly_name: hallway
     supported_features: 32
     state: 'on'
-  light.kitchen:
+  light.kitchen_ceiling_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 204
+    color_temp_kelvin: 3000
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
+      - 255
+      - 159
+      - 70
+    xy_color:
+      - 0.546
+      - 0.389
+    entity_id:
+      - light.kitchen_ceiling_lamp_01
+      - light.kitchen_ceiling_lamp_02
+      - light.kitchen_ceiling_lamp_03
+      - light.kitchen_ceiling_lamp_04
+      - light.kitchen_ceiling_lamp_05
+      - light.kitchen_ceiling_lamp_06
+    friendly_name: kitchen_ceiling_lamp
+    supported_features: 32
+    state: 'on'
+  light.kitchen_speaker_lamp:
     min_color_temp_kelvin: 2202
     max_color_temp_kelvin: 6535
     supported_color_modes:
@@ -108,20 +137,42 @@ entities:
     brightness: 204
     color_temp_kelvin: 2500
     hs_color:
-      - 28.468
-      - 66.788
+      - 28.874
+      - 72.522
     rgb_color:
       - 255
-      - 165
-      - 85
+      - 159
+      - 70
     xy_color:
-      - 0.529
-      - 0.387
+      - 0.546
+      - 0.389
+    friendly_name: kitchen_speaker_lamp
+    supported_features: 32
+    state: 'on'
+  light.kitchen_table_lamp:
+    min_color_temp_kelvin: 2202
+    max_color_temp_kelvin: 6535
+    supported_color_modes:
+      - color_temp
+      - xy
+    color_mode: color_temp
+    brightness: 204
+    color_temp_kelvin: 2500
+    hs_color:
+      - 28.874
+      - 72.522
+    rgb_color:
+      - 255
+      - 159
+      - 70
+    xy_color:
+      - 0.546
+      - 0.389
     entity_id:
-      - light.kitchen_ceiling_lamp
-      - light.kitchen_table_lamp
-      - light.kitchen_speaker_lamp
-    friendly_name: kitchen
+      - light.kitchen_table_lamp_01
+      - light.kitchen_table_lamp_02
+      - light.kitchen_table_lamp_03
+    friendly_name: kitchen_table_lamp
     supported_features: 32
     state: 'on'
   light.lily_bedroom:
@@ -132,7 +183,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -157,7 +208,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -182,7 +233,7 @@ entities:
       - xy
     color_mode: color_temp
     brightness: 204
-    color_temp_kelvin: 3000
+    color_temp_kelvin: 3003
     hs_color:
       - 27.82
       - 56.814
@@ -210,7 +261,11 @@ metadata:
     entity_only: true
   light.hallway:
     entity_only: true
-  light.kitchen:
+  light.kitchen_ceiling_lamp:
+    entity_only: true
+  light.kitchen_speaker_lamp:
+    entity_only: true
+  light.kitchen_table_lamp:
     entity_only: true
   light.lily_bedroom:
     entity_only: true
