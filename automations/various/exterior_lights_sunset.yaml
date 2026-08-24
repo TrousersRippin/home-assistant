@@ -1,17 +1,18 @@
 ---
 alias: Exterior Lights Sunset
 description: ''
-trigger:
-  - platform: sun
-    event: sunset
-    offset: 00:10:00
-condition: []
-action:
+triggers:
+  - event: sunset
+    offset: '00:10:00'
+    trigger: sun
+conditions: []
+actions:
   - action: light.turn_on
     metadata: {}
     data:
       transition: 60
       brightness_pct: 50
+      color_temp_kelvin: 2500
     target:
       entity_id: light.exterior
 mode: single

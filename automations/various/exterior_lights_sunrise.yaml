@@ -1,12 +1,12 @@
 ---
 alias: Exterior Lights Sunrise
 description: ''
-trigger:
-  - platform: sun
-    event: sunrise
-    offset: 00:10:00
-condition: []
-action:
+triggers:
+  - event: sunrise
+    offset: '00:10:00'
+    trigger: sun
+conditions: []
+actions:
   - action: light.turn_off
     metadata: {}
     data:
