@@ -1,6 +1,6 @@
 ---
 alias: Troy's Office Remote
-description: ""
+description: ''
 use_blueprint:
   path: TrousersRippin/ikea_bilresa_button.yaml
   input:
@@ -21,15 +21,10 @@ use_blueprint:
         metadata: {}
         data:
           color_temp_kelvin: 3000
-          brightness_pct: 100
+          brightness_pct: 70
         target:
           entity_id: light.troy_office
-    button1_long_press:
-      - device_id: 66a697adf0cb0c787489e2af81ff3060
-        domain: cover
-        entity_id: 5d693bf06bd7d5143674e95f92fea832
-        type: set_position
-        position: 65
+    button1_long_press: []
     button2_single:
       - action: light.turn_on
         metadata: {}
@@ -44,9 +39,4 @@ use_blueprint:
         data: {}
         target:
           entity_id: light.troy_office
-    button2_long_press:
-      - device_id: 66a697adf0cb0c787489e2af81ff3060
-        domain: cover
-        entity_id: 5d693bf06bd7d5143674e95f92fea832
-        type: set_position
-        position: 50
+    button2_long_press: []
