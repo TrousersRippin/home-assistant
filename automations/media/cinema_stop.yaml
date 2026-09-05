@@ -1,6 +1,6 @@
 ---
 alias: Cinema Stop
-description: ""
+description: ''
 triggers:
   - trigger: state
     entity_id:
@@ -15,7 +15,7 @@ actions:
     metadata: {}
     data:
       transition: 5
-      brightness_pct: 50
+      brightness_pct: 75
     target:
       entity_id:
         - light.living_room_window_lamp
