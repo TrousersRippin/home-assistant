@@ -3,7 +3,7 @@ alias: Bedroom Lights Dressing
 description: ''
 triggers:
   - trigger: time
-    at: '06:20:00'
+    at: '06:30:00'
 conditions:
   - condition: state
     entity_id: binary_sensor.workday_sensor_se
