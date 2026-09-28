@@ -36,7 +36,7 @@ use_blueprint:
             - light.storage_ceiling_lamp
     battery_entity: sensor.garage_mtn_sensor_battery
     battery_low_action:
-      - action: notify.mobile_app_troys_iphone_17_pro
+      - action: notify.mobile_app_troys_iphone_air
         metadata: {}
         data:
           message: low battery!
