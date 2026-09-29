@@ -34,7 +34,7 @@ use_blueprint:
             - light.lounge_standing_lamp
     battery_entity: sensor.stairway_mtn_sensor_battery
     battery_low_action:
-      - action: notify.mobile_app_troys_iphone_air
+      - action: notify.mobile_app_troys_iphone
         metadata: {}
         data:
           message: low battery!

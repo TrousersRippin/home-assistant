@@ -27,7 +27,7 @@ use_blueprint:
         data: {}
     battery_entity: sensor.front_door_sensor_battery
     battery_low_action:
-      - action: notify.mobile_app_troys_iphone_air
+      - action: notify.mobile_app_troys_iphone
         metadata: {}
         data:
           message: low battery!
