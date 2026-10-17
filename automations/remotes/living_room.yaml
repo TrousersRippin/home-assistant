@@ -1,0 +1,39 @@
+---
+alias: Living Room Remote
+description: ''
+use_blueprint:
+  path: TrousersRippin/ikea_bilresa_button.yaml
+  input:
+    button1_event:
+      - event.living_room_remote_button_1
+    button2_event:
+      - event.living_room_remote_button_2
+    button1_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_step_pct: 25
+        target:
+          entity_id: light.living_room
+    button1_double:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 75
+        target:
+          entity_id: light.living_room
+    button1_long_press: []
+    button2_single:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_step_pct: -25
+        target:
+          entity_id: light.living_room
+    button2_double:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room
+    button2_long_press: []
