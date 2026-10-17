@@ -1,6 +1,6 @@
 ---
 alias: Bedroom Lights Alarm
-description: ""
+description: ''
 triggers:
   - trigger: time
     at: "06:45:00"
@@ -13,7 +13,6 @@ actions:
   - action: light.turn_on
     metadata: {}
     data:
-      color_temp_kelvin: 3000
       brightness_pct: 1
     target:
       entity_id:

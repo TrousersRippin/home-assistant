@@ -1,6 +1,6 @@
 ---
 alias: Cinema Resume
-description: ""
+description: ''
 triggers:
   - trigger: state
     entity_id:

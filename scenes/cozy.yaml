@@ -1,243 +1,48 @@
 ---
-id: '1783441111925'
+id: '1767225602000'
 name: Cozy
+icon: mdi:fireplace
 entities:
-  light.living_room_standing_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    entity_id:
-      - light.living_room_standing_lamp_01
-      - light.living_room_standing_lamp_02
-    friendly_name: living_room_standing_lamp
-    supported_features: 32
-    state: 'off'
   light.living_room_window_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
+    state: 'on'
     brightness: 192
-    color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    entity_id:
-      - light.living_room_window_lamp_01
-      - light.living_room_window_lamp_02
-      - light.living_room_window_lamp_03
-    friendly_name: living_room_window_lamp
-    supported_features: 32
-    state: 'on'
-  light.malin_office_wall_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
     color_mode: color_temp
-    brightness: 128
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    friendly_name: malin_office_wall_lamp
-    supported_features: 32
+    color_temp_kelvin: 3000
+  light.lounge_table_lamp:
     state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 3000
+  light.malin_office_wall_lamp:
+    state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 2500
+  light.kitchen_speaker_lamp:
+    state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 2500
+  light.bedroom_bedside_lamp:
+    state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 3000
+  light.bedroom_standing_lamp:
+    state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 3000
+  light.living_room_standing_lamp:
+    state: 'off'
   light.hallway_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    entity_id:
-      - light.hallway_ceiling_lamp_01
-      - light.hallway_ceiling_lamp_02
-      - light.hallway_ceiling_lamp_03
-    friendly_name: hallway_ceiling_lamp
-    supported_features: 32
     state: 'off'
   light.kitchen_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    entity_id:
-      - light.kitchen_ceiling_lamp_01
-      - light.kitchen_ceiling_lamp_02
-      - light.kitchen_ceiling_lamp_03
-      - light.kitchen_ceiling_lamp_04
-      - light.kitchen_ceiling_lamp_05
-      - light.kitchen_ceiling_lamp_06
-    friendly_name: kitchen_ceiling_lamp
-    supported_features: 32
     state: 'off'
-  light.kitchen_speaker_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 128
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    friendly_name: kitchen_speaker_lamp
-    supported_features: 32
-    state: 'on'
   light.kitchen_table_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    entity_id:
-      - light.kitchen_table_lamp_01
-      - light.kitchen_table_lamp_02
-      - light.kitchen_table_lamp_03
-    friendly_name: kitchen_table_lamp
-    supported_features: 32
     state: 'off'
-  light.lounge_table_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 128
-    color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    entity_id:
-      - light.lounge_table_lamp_01
-      - light.lounge_table_lamp_02
-    friendly_name: lounge_table_lamp
-    supported_features: 32
-    state: 'on'
-  light.bedroom_bedside_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 192
-    color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    entity_id:
-      - light.bedroom_bedside_lamp_01
-      - light.bedroom_bedside_lamp_02
-    friendly_name: bedroom_bedside_lamp
-    supported_features: 32
-    state: 'on'
   light.bedroom_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: null
-    brightness: null
-    color_temp_kelvin: null
-    hs_color: null
-    rgb_color: null
-    xy_color: null
-    friendly_name: bedroom_ceiling_lamp
-    supported_features: 32
     state: 'off'
-  light.bedroom_standing_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 192
-    color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    friendly_name: bedroom_standing_lamp
-    supported_features: 32
-    state: 'on'
-icon: mdi:fireplace
 metadata:
   light.living_room_standing_lamp:
     entity_only: true

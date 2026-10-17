@@ -77,7 +77,6 @@ views:
               target:
                 entity_id: light.all
               data:
-                color_temp_kelvin: 3000
                 brightness_pct: 100
             icon_tap_action:
               action: none

@@ -1,6 +1,6 @@
 ---
 alias: Malin's Office Remote
-description: ""
+description: ''
 use_blueprint:
   path: TrousersRippin/ikea_bilresa_button.yaml
   input:
@@ -12,28 +12,24 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 2500
-          brightness_pct: 100
+          brightness_step_pct: 25
         target:
-          entity_id: light.malin_office_standing_lamp
-      - action: light.turn_on
-        metadata: {}
-        data:
-          color_temp_kelvin: 2500
-          brightness_pct: 70
-        target:
-          entity_id: light.malin_office_wall_lamp
+          entity_id:
+            - light.malin_office_standing_lamp
+            - light.malin_office_wall_lamp
     button1_double:
       - action: light.turn_on
         metadata: {}
         data:
-          brightness_pct: 100
+          brightness_pct: 75
         target:
           entity_id: light.malin_office
+    button1_long_press: []
     button2_single:
-      - action: light.turn_off
+      - action: light.turn_on
         metadata: {}
-        data: {}
+        data:
+          brightness_step_pct: -25
         target:
           entity_id:
             - light.malin_office_standing_lamp
@@ -44,3 +40,4 @@ use_blueprint:
         data: {}
         target:
           entity_id: light.malin_office
+    button2_long_press: []

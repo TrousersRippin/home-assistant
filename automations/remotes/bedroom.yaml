@@ -1,6 +1,6 @@
 ---
 alias: Bedroom Remote
-description: ""
+description: ''
 use_blueprint:
   path: TrousersRippin/ikea_bilresa_button.yaml
   input:
@@ -12,7 +12,6 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
           brightness_step_pct: 25
         target:
           entity_id:
@@ -22,15 +21,14 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
-          brightness_pct: 100
+          brightness_pct: 75
         target:
           entity_id: light.bedroom
+    button1_long_press: []
     button2_single:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
           brightness_step_pct: -25
         target:
           entity_id:
@@ -42,3 +40,4 @@ use_blueprint:
         data: {}
         target:
           entity_id: light.bedroom
+    button2_long_press: []

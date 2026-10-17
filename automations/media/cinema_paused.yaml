@@ -1,6 +1,6 @@
 ---
 alias: Cinema Paused
-description: ""
+description: ''
 triggers:
   - trigger: state
     entity_id:

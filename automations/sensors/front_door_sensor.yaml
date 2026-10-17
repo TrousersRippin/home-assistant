@@ -1,6 +1,6 @@
 ---
 alias: Front Door Sensor
-description: ""
+description: ''
 use_blueprint:
   path: TrousersRippin/ikea_myggbett.yaml
   input:
@@ -10,7 +10,6 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
           brightness_pct: 75
         target:
           entity_id: light.hallway_ceiling_lamp

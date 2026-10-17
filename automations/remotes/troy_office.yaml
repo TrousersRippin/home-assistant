@@ -12,7 +12,6 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
           brightness_step_pct: 25
         target:
           entity_id: light.troy_office_standing_lamp
@@ -20,8 +19,7 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
-          brightness_pct: 70
+          brightness_pct: 75
         target:
           entity_id: light.troy_office
     button1_long_press: []
@@ -29,7 +27,6 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          color_temp_kelvin: 3000
           brightness_step_pct: -25
         target:
           entity_id: light.troy_office_standing_lamp

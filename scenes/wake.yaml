@@ -1,136 +1,33 @@
 ---
-id: "1783441038520"
+id: '1767225603000'
 name: Wake
+icon: mdi:weather-sunset-up
 entities:
   light.kitchen_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 89
-    color_temp_kelvin: 3000
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    entity_id:
-      - light.kitchen_ceiling_lamp_01
-      - light.kitchen_ceiling_lamp_02
-      - light.kitchen_ceiling_lamp_03
-      - light.kitchen_ceiling_lamp_04
-      - light.kitchen_ceiling_lamp_05
-      - light.kitchen_ceiling_lamp_06
-    friendly_name: kitchen_ceiling_lamp
-    supported_features: 32
     state: 'on'
+    brightness: 90
+    color_mode: color_temp
+    color_temp_kelvin: 3000
   light.kitchen_speaker_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 89
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    friendly_name: kitchen_speaker_lamp
-    supported_features: 32
     state: 'on'
+    brightness: 90
+    color_mode: color_temp
+    color_temp_kelvin: 2500
   light.kitchen_table_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
-    brightness: 89
-    color_temp_kelvin: 2500
-    hs_color:
-      - 28.874
-      - 72.522
-    rgb_color:
-      - 255
-      - 159
-      - 70
-    xy_color:
-      - 0.546
-      - 0.389
-    entity_id:
-      - light.kitchen_table_lamp_01
-      - light.kitchen_table_lamp_02
-      - light.kitchen_table_lamp_03
-    friendly_name: kitchen_table_lamp
-    supported_features: 32
     state: 'on'
+    brightness: 90
+    color_mode: color_temp
+    color_temp_kelvin: 2500
   light.hallway_ceiling_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
+    state: 'on'
     brightness: 90
+    color_mode: color_temp
     color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    entity_id:
-      - light.hallway_ceiling_lamp_01
-      - light.hallway_ceiling_lamp_02
-      - light.hallway_ceiling_lamp_03
-    friendly_name: hallway_ceiling_lamp
-    supported_features: 32
-    state: "on"
   light.lounge_table_lamp:
-    min_color_temp_kelvin: 2202
-    max_color_temp_kelvin: 6535
-    supported_color_modes:
-      - color_temp
-      - xy
-    color_mode: color_temp
+    state: 'on'
     brightness: 90
+    color_mode: color_temp
     color_temp_kelvin: 3000
-    hs_color:
-      - 27.82
-      - 56.814
-    rgb_color:
-      - 255
-      - 177
-      - 110
-    xy_color:
-      - 0.496
-      - 0.383
-    entity_id:
-      - light.lounge_table_lamp_01
-      - light.lounge_table_lamp_02
-    friendly_name: lounge_table_lamp
-    supported_features: 32
-    state: "on"
-icon: mdi:weather-sunset-up
 metadata:
   light.kitchen_ceiling_lamp:
     entity_only: true
