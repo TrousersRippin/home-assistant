@@ -3,26 +3,53 @@ id: '1767225602000'
 name: Cozy
 icon: mdi:fireplace
 entities:
+  light.living_room_standing_lamp:
+    state: 'off'
   light.living_room_window_lamp:
     state: 'on'
     brightness: 192
     color_mode: color_temp
     color_temp_kelvin: 3000
-  light.lounge_table_lamp:
+  light.troy_office_ceiling_lamp:
+    state: 'off'
+  light.troy_office_standing_lamp:
     state: 'on'
     brightness: 128
     color_mode: color_temp
     color_temp_kelvin: 3000
+  light.malin_office_ceiling_lamp:
+    state: 'off'
+  light.malin_office_standing_lamp:
+    state: 'off'
   light.malin_office_wall_lamp:
     state: 'on'
     brightness: 128
     color_mode: color_temp
     color_temp_kelvin: 2500
+  light.hallway_ceiling_lamp:
+    state: 'off'
+  light.kitchen_ceiling_lamp:
+    state: 'off'
+  light.kitchen_table_lamp:
+    state: 'off'
   light.kitchen_speaker_lamp:
     state: 'on'
     brightness: 128
     color_mode: color_temp
     color_temp_kelvin: 2500
+  light.lily_bedroom_ceiling_lamp:
+    state: 'off'
+  light.lily_bedroom_window_lamp:
+    state: 'off'
+  light.lounge_standing_lamp:
+    state: 'off'
+  light.lounge_table_lamp:
+    state: 'on'
+    brightness: 128
+    color_mode: color_temp
+    color_temp_kelvin: 3000
+  light.bedroom_ceiling_lamp:
+    state: 'off'
   light.bedroom_bedside_lamp:
     state: 'on'
     brightness: 128
@@ -33,20 +60,18 @@ entities:
     brightness: 128
     color_mode: color_temp
     color_temp_kelvin: 3000
-  light.living_room_standing_lamp:
-    state: 'off'
-  light.hallway_ceiling_lamp:
-    state: 'off'
-  light.kitchen_ceiling_lamp:
-    state: 'off'
-  light.kitchen_table_lamp:
-    state: 'off'
-  light.bedroom_ceiling_lamp:
-    state: 'off'
 metadata:
   light.living_room_standing_lamp:
     entity_only: true
   light.living_room_window_lamp:
+    entity_only: true
+  light.troy_office_ceiling_lamp:
+    entity_only: true
+  light.troy_office_standing_lamp:
+    entity_only: true  
+  light.malin_office_ceiling_lamp:
+    entity_only: true
+  light.malin_office_standing_lamp:
     entity_only: true
   light.malin_office_wall_lamp:
     entity_only: true
@@ -54,15 +79,21 @@ metadata:
     entity_only: true
   light.kitchen_ceiling_lamp:
     entity_only: true
+  light.kitchen_table_lamp:
+    entity_only: true
   light.kitchen_speaker_lamp:
     entity_only: true
-  light.kitchen_table_lamp:
+  light.lily_bedroom_ceiling_lamp:
+    entity_only: true
+  light.lily_bedroom_window_lamp:
+    entity_only: true
+  light.lounge_standing_lamp:
     entity_only: true
   light.lounge_table_lamp:
     entity_only: true
-  light.bedroom_bedside_lamp:
-    entity_only: true
   light.bedroom_ceiling_lamp:
+    entity_only: true
+  light.bedroom_bedside_lamp:
     entity_only: true
   light.bedroom_standing_lamp:
     entity_only: true
