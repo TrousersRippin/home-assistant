@@ -68,7 +68,7 @@ metadata:
   light.troy_office_ceiling_lamp:
     entity_only: true
   light.troy_office_standing_lamp:
-    entity_only: true  
+    entity_only: true
   light.malin_office_ceiling_lamp:
     entity_only: true
   light.malin_office_standing_lamp:
