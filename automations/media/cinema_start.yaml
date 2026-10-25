@@ -9,10 +9,10 @@ triggers:
 conditions:
   - condition: sun
     after: sunset
-  - condition: template
-    value_template: >
-      {{ state_attr('media_player.plex_for_lg', 'media_duration') | int(0) >
-      3600 }}
+  - condition: state
+    entity_id: media_player.plex_for_lg
+    attribute: media_content_type
+    state: movie
 actions:
   - action: light.turn_off
     metadata: {}
@@ -20,5 +20,6 @@ actions:
       transition: 5
     target:
       entity_id:
-        - light.living_room_window_lamp
+        - light.living_room
+        - light.living_room_door_lamp
 mode: single
