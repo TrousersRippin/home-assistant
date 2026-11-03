@@ -14,7 +14,7 @@ entities:
     state: 'off'
   light.troy_office_standing_lamp:
     state: 'on'
-    brightness: 128
+    brightness: 192
     color_mode: color_temp
     color_temp_kelvin: 3000
   light.malin_office_ceiling_lamp:
