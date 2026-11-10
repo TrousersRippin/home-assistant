@@ -12,14 +12,14 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          brightness_step_pct: 25
+          brightness_step_pct: 50
         target:
           entity_id: light.hallway
     button1_double:
       - action: light.turn_on
         metadata: {}
         data:
-          brightness_pct: 75
+          brightness_pct: 100
         target:
           entity_id: light.hallway
     button1_long_press: []
@@ -27,7 +27,7 @@ use_blueprint:
       - action: light.turn_on
         metadata: {}
         data:
-          brightness_step_pct: -25
+          brightness_step_pct: -50
         target:
           entity_id: light.hallway
     button2_double:
