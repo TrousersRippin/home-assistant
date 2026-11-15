@@ -45,4 +45,5 @@ use_blueprint:
       - action: notify.mobile_app_troys_iphone
         metadata: {}
         data:
-          message: low battery!
+          title: Low battery
+          message: "Entrance motion sensor battery is at {{ states('sensor.entrance_mtn_sensor_battery') }}%"
