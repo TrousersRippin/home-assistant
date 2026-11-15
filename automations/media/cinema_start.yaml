@@ -7,8 +7,9 @@ triggers:
       - media_player.plex_for_lg
     to: playing
 conditions:
-  - condition: sun
-    after: sunset
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   - condition: state
     entity_id: media_player.plex_for_lg
     attribute: media_content_type

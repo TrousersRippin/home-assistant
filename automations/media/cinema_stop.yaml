@@ -5,11 +5,16 @@ triggers:
   - trigger: state
     entity_id:
       - media_player.plex_for_lg
-    from: playing
-    to: idle
+    from:
+      - playing
+      - paused
+    to:
+      - idle
+      - "off"
 conditions:
-  - condition: sun
-    after: sunset
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
 actions:
   - action: light.turn_on
     metadata: {}
