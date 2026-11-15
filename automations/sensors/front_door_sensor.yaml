@@ -5,7 +5,7 @@ use_blueprint:
   path: TrousersRippin/ikea_myggbett.yaml
   input:
     door_entity: binary_sensor.front_door_sensor
-    night_start: "19:00:00"
+    period_mode: sun
     action_opened_immediate_night:
       - action: light.turn_on
         metadata: {}
@@ -13,12 +13,13 @@ use_blueprint:
           brightness_pct: 75
         target:
           entity_id: light.hallway_ceiling_lamp
-    # Door must stay closed for 2 minutes; reopening resets the timer
+    # Door must stay closed for 2 minutes; reopening resets the timer.
+    # The "long" actions have no day/night split, so gate on the sun here.
     wait_closed_long: 120
     action_closed_long:
-      - condition: time
-        after: "19:00:00"
-        before: "07:00:00"
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
       - action: light.turn_off
         metadata: {}
         target:

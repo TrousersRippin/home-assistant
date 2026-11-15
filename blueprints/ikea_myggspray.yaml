@@ -27,10 +27,25 @@ blueprint:
     # ============================================================
     # DAY / NIGHT PERIODS
     # ============================================================
+    period_mode:
+      name: Day/Night Mode
+      description: >
+        How DAY and NIGHT are decided. "Fixed times" uses the start times below.
+        "Sun" treats sunrise to sunset as DAY and sunset to sunrise as NIGHT
+        (the start times are then ignored).
+      default: time
+      selector:
+        select:
+          options:
+            - label: Fixed times
+              value: time
+            - label: Sun (sunrise / sunset)
+              value: sun
+
     day_start:
       name: Day Period Start
       description: >
-        Time when the DAY period begins (e.g. 07:00).
+        Time when the DAY period begins (e.g. 07:00). Only used in "Fixed times" mode.
         The NIGHT period begins at "Night Period Start" and ends when Day begins.
       default: "07:00:00"
       selector:
@@ -192,6 +207,7 @@ trigger_variables:
   safety_delay_input: !input safety_delay
   day_start_input: !input day_start
   night_start_input: !input night_start
+  period_mode_input: !input period_mode
 
 triggers:
   - trigger: state
@@ -259,9 +275,20 @@ actions:
           # Day/night branch
           - choose:
               - conditions:
-                  - condition: time
-                    after: !input day_start
-                    before: !input night_start
+                  - condition: or
+                    conditions:
+                      - condition: and
+                        conditions:
+                          - "{{ period_mode_input != 'sun' }}"
+                          - condition: time
+                            after: !input day_start
+                            before: !input night_start
+                      - condition: and
+                        conditions:
+                          - "{{ period_mode_input == 'sun' }}"
+                          - condition: state
+                            entity_id: sun.sun
+                            state: above_horizon
                 sequence: !input motion_on_action_day
             default: !input motion_on_action_night
 
