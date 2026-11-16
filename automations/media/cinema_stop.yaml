@@ -15,6 +15,9 @@ conditions:
   - condition: state
     entity_id: sun.sun
     state: below_horizon
+  - condition: template
+    value_template: >-
+      {{ (trigger.from_state.attributes.username or '') | lower == 'troy rippin' }}
 actions:
   - action: light.turn_on
     metadata: {}

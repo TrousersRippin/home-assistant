@@ -14,6 +14,9 @@ conditions:
     entity_id: media_player.plex_for_lg
     attribute: media_content_type
     state: movie
+  - condition: template
+    value_template: >-
+      {{ (state_attr('media_player.plex_for_lg', 'username') or '') | lower == 'troy rippin' }}
 actions:
   - action: light.turn_off
     metadata: {}
