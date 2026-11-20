@@ -5,6 +5,7 @@ triggers:
   - trigger: state
     entity_id:
       - media_player.plex_for_lg
+    not_from: paused
     to: playing
 conditions:
   - condition: state

@@ -17,6 +17,9 @@ conditions:
     state: below_horizon
   - condition: template
     value_template: >-
+      {{ trigger.from_state.attributes.media_content_type == 'movie' }}
+  - condition: template
+    value_template: >-
       {{ (trigger.from_state.attributes.username or '') | lower == 'troy rippin' }}
 actions:
   - action: light.turn_on
