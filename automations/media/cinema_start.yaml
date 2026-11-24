@@ -5,7 +5,11 @@ triggers:
   - trigger: state
     entity_id:
       - media_player.plex_for_lg
-    not_from: paused
+    not_from:
+      - paused
+      - buffering
+      - unavailable
+      - unknown
     to: playing
 conditions:
   - condition: state

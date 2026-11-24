@@ -11,6 +11,18 @@ triggers:
     to:
       - idle
       - "off"
+  # TV powered off can go playing -> unavailable; wait so brief dropouts don't count
+  - trigger: state
+    entity_id:
+      - media_player.plex_for_lg
+    from:
+      - playing
+      - paused
+    to: unavailable
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
 conditions:
   - condition: state
     entity_id: sun.sun
