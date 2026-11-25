@@ -29,7 +29,6 @@ actions:
       transition: 1
     target:
       entity_id:
-        - light.living_room_window_lamp
         - light.living_room
         - light.living_room_door_lamp
 mode: single
