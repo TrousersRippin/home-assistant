@@ -66,11 +66,7 @@ views:
             hide_state: true
             vertical: true
             tap_action:
-              action: perform-action
-              perform_action: light.turn_off
-              target:
-                entity_id:
-                  - light.all
+              action: toggle
             hold_action:
               action: perform-action
               perform_action: light.turn_on
