@@ -14,7 +14,9 @@ use_blueprint:
         data:
           brightness_step_pct: 25
         target:
-          entity_id: light.troy_office_standing_lamp
+          entity_id: 
+            - light.troy_office_standing_lamp
+            - light.troy_office_desk_lamp
     button1_double:
       - action: light.turn_on
         metadata: {}
@@ -22,18 +24,32 @@ use_blueprint:
           brightness_pct: 75
         target:
           entity_id: light.troy_office
-    button1_long_press: []
+    button1_long_press:
+      - action: cover.set_cover_position
+        metadata: {}
+        target:
+          entity_id: cover.desk_5250
+        data:
+          position: 75
     button2_single:
       - action: light.turn_on
         metadata: {}
         data:
           brightness_step_pct: -25
         target:
-          entity_id: light.troy_office_standing_lamp
+          entity_id: 
+            - light.troy_office_standing_lamp
+            - light.troy_office_desk_lamp
     button2_double:
       - action: light.turn_off
         metadata: {}
         data: {}
         target:
           entity_id: light.troy_office
-    button2_long_press: []
+    button2_long_press:
+      - action: cover.set_cover_position
+        metadata: {}
+        target:
+          entity_id: cover.desk_5250
+        data:
+          position: 55
